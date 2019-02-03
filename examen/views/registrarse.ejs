@@ -2,7 +2,7 @@
 
 <p>Registrate</p>
 
-<form action="/registrarse" method="post">
+<form action="/Usuario/crear-usuario" method="post">
     <div>
         <label for="username">Usuario</label>
         <input id="username" type="text" name="username">
@@ -15,8 +15,8 @@
 
             </div>
             <div>
-                <label for="fecha">Fecha de Nacimiento</label>
-                <input id="fecha" type="text" name="fecha">
+                <label for="fechaNacimiento">Fecha de Nacimiento</label>
+                <input id="fechaNacimiento" type="text" name="fechaNacimiento">
 
             </div>
             <label for="password">Password</label>
@@ -24,3 +24,6 @@
         </div>
         <button>Registrarse</button>
 </form>
+<a href="/login">
+    <button>Regresar</button>
+</a>

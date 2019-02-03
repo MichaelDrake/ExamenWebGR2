@@ -13,13 +13,13 @@ export class UsuarioEntity {
     @Column(
         {
             nullable: false,
-            name: 'nombre_primero',
+            name: 'username',
             type: 'varchar',
             length: 50,
-            default: 'nombre'
+
         }
     )
-    nombre: string;
+    username: string;
 
     @Column({
         nullable: false,
@@ -30,27 +30,36 @@ export class UsuarioEntity {
     correo: string;
 
     @Column({
-        nullable: false
-    })
-    password: string;
-
-    @Column({
-        nullable: false
+        nullable: false,
+        name: 'fechaNacimiento',
+        type: 'varchar',
+        length: 50,
     })
     fechaNacimiento: string;
 
-    /*
+    @Column({
+        nullable: true,
+        name: 'password',
+        type: 'varchar',
+        length: 50,
+    })
+    password: string;
+
+
+
+
     @BeforeInsert()
     antesDeInsertar() {
         console.log('Ejecutandome antes de insertar');
+        console.log(this.id);
     }
 
     @BeforeInsert()
     verificarFuncion() {
         console.log('Ejecuta despues de antes de insertar');
     }
-    */
 
+/*
     @OneToMany(
         type => TiendaEntity, // Tipo de Dato Un Usuario a muchos
         // Libros[]
@@ -58,5 +67,5 @@ export class UsuarioEntity {
     )
     libros: TiendaEntity[];
 
-
+*/
 }

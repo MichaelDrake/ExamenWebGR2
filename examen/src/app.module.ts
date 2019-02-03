@@ -19,7 +19,7 @@ import {UsuarioModule} from './usuario/usuario.module';
           password: 'P@ssw0rd',
           database: 'web-examen',
           synchronize: true,
-          dropSchema: false,
+          dropSchema: true,
           entities: [
             UsuarioEntity,
             TiendaEntity,

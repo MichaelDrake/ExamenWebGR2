@@ -106,7 +106,7 @@ export class UsuarioController {
 
         await this._usuarioService.borrar(Number(idUsuario));
 
-        const parametrosConsulta = `?accion=borrar&nombre=${usuarioEncontrado.nombre}`;
+        const parametrosConsulta = `?accion=borrar&nombre=${usuarioEncontrado.username}`;
 
         response.redirect('/Usuario/inicio' + parametrosConsulta);
     }
@@ -116,7 +116,7 @@ export class UsuarioController {
         @Res() response
     ) {
         response.render(
-            'crear-usuario'
+            'registrarse'
         )
     }
 
@@ -147,7 +147,7 @@ export class UsuarioController {
 
         await this._usuarioService.actualizar(+idUsuario, usuario);
 
-        const parametrosConsulta = `?accion=actualizar&nombre=${usuario.nombre}`;
+        const parametrosConsulta = `?accion=actualizar&nombre=${usuario.username}`;
 
         response.redirect('/Usuario/inicio' + parametrosConsulta);
 
@@ -161,9 +161,11 @@ export class UsuarioController {
     ) {
         const usuarioValidado = new UsuarioCreateDto();
 
-        usuarioValidado.nombre = usuario.nombre;
-        usuarioValidado.biografia = usuario.biografia;
+        ;
+
         usuarioValidado.username = usuario.username;
+        usuarioValidado.correo = usuario.correo;
+        usuarioValidado.fechaNacimiento = usuario.fechaNacimiento;
         usuarioValidado.password = usuario.password;
 
         const errores: ValidationError[] = await validate(usuarioValidado);
@@ -177,9 +179,9 @@ export class UsuarioController {
         } else {
             await this._usuarioService.crear(usuario);
 
-            const parametrosConsulta = `?accion=crear&nombre=${usuario.nombre}`;
+            // const parametrosConsulta = `?accion=crear&username=${usuario.username}`;
 
-            response.redirect('/Usuario/inicio' + parametrosConsulta);
+           response.redirect('/Usuario/crear-usuario');
         }
 
 

@@ -110,12 +110,7 @@ export class AppController {
     ) {
         response.render('login');
     }
-    @Get('registrarse')
-    RegistrarseVista(
-        @Res() response
-    ) {
-        response.render('registrarse');
-    }
+
 
     @Get('logout')
     logout(
