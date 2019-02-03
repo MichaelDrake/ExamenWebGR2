@@ -4,7 +4,7 @@ import {Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "type
 import {UsuarioEntity} from "../usuario/usuario-entity";
 import {ProductoEntity} from "../producto/producto.entity";
 
-@Entity('libro')
+@Entity('db_usuario')
 export class TiendaEntity {
 
     @PrimaryGeneratedColumn()
@@ -20,13 +20,13 @@ export class TiendaEntity {
     @ManyToOne(
         type => UsuarioEntity, // Tipo relacion de muchos
         // a uno
-        usuario => usuario.libros, // Campo donde nos guarda
+        usuario => usuario.tiendas, // Campo donde nos guarda
     )
     usuario: UsuarioEntity;
     // tienda.entity.ts
     @OneToMany(
         type => ProductoEntity,
-        pagina => pagina.libro
+        producto => producto.libro
     )
-    paginas: ProductoEntity[];
+    productos: ProductoEntity[];
 }
