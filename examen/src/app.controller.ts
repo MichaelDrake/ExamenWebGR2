@@ -96,17 +96,12 @@ export class AppController {
     ) {
         const identificado = await this._usuarioService
             .login(username, password);
-
         if (identificado) {
-
             sesion.usuario = username;
-
             response.redirect('/saludar')
-
         } else {
             throw new BadRequestException({mensaje: 'Error login'})
         }
-
     }
 
     @Get('login')
@@ -114,6 +109,12 @@ export class AppController {
         @Res() response
     ) {
         response.render('login');
+    }
+    @Get('registrarse')
+    RegistrarseVista(
+        @Res() response
+    ) {
+        response.render('registrarse');
     }
 
     @Get('logout')
@@ -124,8 +125,5 @@ export class AppController {
         sesion.usuario = undefined;
         sesion.destroy();
         response.redirect('/login');
-
     }
-
-
 }
