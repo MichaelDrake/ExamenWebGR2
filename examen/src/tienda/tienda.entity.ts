@@ -4,7 +4,7 @@ import {Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "type
 import {UsuarioEntity} from "../usuario/usuario-entity";
 import {ProductoEntity} from "../producto/producto.entity";
 
-@Entity('db_usuario')
+@Entity('db_tienda')
 export class TiendaEntity {
 
     @PrimaryGeneratedColumn()
@@ -17,6 +17,27 @@ export class TiendaEntity {
     })
     nombre: string;
 
+    @Column({
+        type: 'varchar',
+        length: 50
+    })
+    direccion: string;
+
+    @Column({
+        type: 'date',
+    })
+    fechaApertura: string;
+
+    @Column({
+        type: 'int',
+    })
+    RUC: number;
+    @Column({
+        type: 'boolean',
+    })
+    matriz: boolean;
+
+
     @ManyToOne(
         type => UsuarioEntity, // Tipo relacion de muchos
         // a uno
@@ -26,7 +47,7 @@ export class TiendaEntity {
     // tienda.entity.ts
     @OneToMany(
         type => ProductoEntity,
-        producto => producto.libro
+        producto => producto.tiendaId
     )
     productos: ProductoEntity[];
 }

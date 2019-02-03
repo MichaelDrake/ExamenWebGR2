@@ -10,7 +10,7 @@ export class UsuarioEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Index()
+    // @Index()
     @Column(
         {
             nullable: false,
@@ -31,12 +31,15 @@ export class UsuarioEntity {
     correo: string;
 
     @Column({
-        nullable: false
+        nullable: false,
+        type: 'varchar',
+        length: 16
     })
     password: string;
 
     @Column({
-        nullable: false
+        nullable: false,
+        type: 'date',
     })
     fechaNacimiento: string;
 
@@ -61,7 +64,7 @@ export class UsuarioEntity {
 
     @OneToMany(
         type => Roles_por_usuarioEntity,
-        roles_por_usuario => roles_por_usuario.usuario_id
+        roles_por_usuario => roles_por_usuario.usuario
     )
     roles_por_usuario: Roles_por_usuarioEntity[];
 

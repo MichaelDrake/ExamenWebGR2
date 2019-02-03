@@ -1,18 +1,50 @@
-import {Column, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {TiendaEntity} from "../tienda/tienda.entity";
+import {Evento_por_productoEntity} from "../evento_por_producto/evento_por_producto.entity";
 
-@Entity('producto')
+
+@Entity('db_producto')
 export class ProductoEntity {
 
-    @PrimaryGeneratedColumn()
-    id: number;
+    @PrimaryGeneratedColumn(
+    )
+    numeroProducto: number;
 
-    @Column()
-    texto: string;
+    @Column({
+        type: 'varchar',
+    })
+    nombre: string;
+
+    @Column({
+        type: 'varchar',
+    })
+    descripcion: string;
+
+    @Column({
+        type: 'decimal',
+    })
+    precio: number;
+
+    @Column({
+        type: 'date',
+    })
+    fechaLanzamientoProducto: string;
+
+    @Column({
+        type: 'int',
+    })
+    aniosGarantia: number;
+
     // producto.entity.ts
     @ManyToOne(
         type => TiendaEntity,
-        libro => libro.paginas
+        tienda => tienda.productos
     )
-    libro: TiendaEntity;
+    tiendaId: TiendaEntity;
+
+    @OneToMany(
+        type => Evento_por_productoEntity,
+        evento_por_producto => evento_por_producto.tabla_producto
+    )
+    eventosPorProducto: Evento_por_productoEntity[];
 }
