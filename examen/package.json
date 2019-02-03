@@ -25,6 +25,7 @@
     "@nestjs/typeorm": "^5.2.2",
     "@types/express-session": "^1.15.11",
     "class-validator": "^0.9.1",
+    "ejs": "^2.6.1",
     "express-session": "^1.15.6",
     "mysql": "^2.16.0",
     "reflect-metadata": "^0.1.12",
