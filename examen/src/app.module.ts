@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import {TypeOrmModule} from '@nestjs/typeorm';
-import {UsuarioEntity} from "./usuario/usuario-entity";
-import {TiendaEntity} from "./tienda/tienda.entity";
-import {ProductoEntity} from "./producto/producto.entity";
-import {UsuarioModule} from "./usuario/usuario.module";
+import {UsuarioEntity} from './usuario/usuario-entity';
+import {TiendaEntity} from './tienda/tienda.entity';
+import {ProductoEntity} from './producto/producto.entity';
+import {UsuarioModule} from './usuario/usuario.module';
 
 
 @Module({
@@ -16,7 +16,7 @@ import {UsuarioModule} from "./usuario/usuario.module";
           host: 'localhost',
           port: 3306,
           username: 'root',
-          password: 'root',
+          password: 'P@ssw0rd',
           database: 'web-examen',
           synchronize: true,
           dropSchema: false,
