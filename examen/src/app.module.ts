@@ -26,7 +26,8 @@ import {UsuarioModule} from "./usuario/usuario.module";
             ProductoEntity
           ]
         }),
-    UsuarioModule
+    UsuarioModule,
+
   ],
   controllers: [AppController],
   providers: [AppService],

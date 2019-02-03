@@ -2,6 +2,7 @@
 
 import {BeforeInsert, Column, Entity, Index, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {TiendaEntity} from "../tienda/tienda.entity";
+import {Roles_por_usuarioEntity} from "../roles_por_usuario/roles_por_usuario.entity";
 
 @Entity('db_usuario')
 export class UsuarioEntity {
@@ -54,9 +55,14 @@ export class UsuarioEntity {
     @OneToMany(
         type => TiendaEntity, // Tipo de Dato Un Usuario a muchos
         // Libros[]
-        libro => libro.usuario // Cual es el campo FK
+        tienda => tienda.usuario // Cual es el campo FK
     )
-    libros: TiendaEntity[];
+    tiendas: TiendaEntity[];
 
+    @OneToMany(
+        type => Roles_por_usuarioEntity,
+        roles_por_usuario => roles_por_usuario.usuario_id
+    )
+    roles_por_usuario: Roles_por_usuarioEntity[];
 
 }
