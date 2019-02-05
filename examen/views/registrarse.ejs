@@ -1,0 +1,29 @@
+<h1>Registrarse</h1>
+
+<p>Registrate</p>
+
+<form action="/Usuario/crear-usuario" method="post">
+    <div>
+        <label for="nombre">Usuario</label>
+        <input id="nombre" type="text" name="nombre">
+
+
+        <div>
+            <div>
+                <label for="correo">Correo</label>
+                <input id="correo" type="text" name="correo">
+
+            </div>
+            <div>
+                <label for="fechaNacimiento">Fecha de Nacimiento</label>
+                <input id="fechaNacimiento" type="Date" name="fechaNacimiento">
+
+            </div>
+            <label for="password">Password</label>
+            <input id="password" type="password" name="password">
+        </div>
+        <button>Registrarse</button>
+</form>
+<a href="/login">
+    <button>Regresar</button>
+</a>
