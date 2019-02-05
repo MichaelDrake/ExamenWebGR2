@@ -107,7 +107,7 @@ export class UsuarioController {
         await this._usuarioService.borrar(Number(idUsuario));
 
 
-        const parametrosConsulta = `?accion=borrar&nombre=${usuarioEncontrado.username}`;
+        const parametrosConsulta = `?accion=borrar&nombre=${usuarioEncontrado.nombre}`;
 
 
         response.redirect('/Usuario/inicio' + parametrosConsulta);
@@ -152,7 +152,7 @@ export class UsuarioController {
         await this._usuarioService.actualizar(+idUsuario, usuario);
 
 
-        const parametrosConsulta = `?accion=actualizar&nombre=${usuario.username}`;
+        const parametrosConsulta = `?accion=actualizar&nombre=${usuario.nombre}`;
 
 
         response.redirect('/Usuario/inicio' + parametrosConsulta);
@@ -167,9 +167,7 @@ export class UsuarioController {
     ) {
         const usuarioValidado = new UsuarioCreateDto();
 
-<
-
-        usuarioValidado.username = usuario.username;
+        usuarioValidado.nombre = usuario.nombre;
         usuarioValidado.correo = usuario.correo;
         usuarioValidado.fechaNacimiento = usuario.fechaNacimiento;
 

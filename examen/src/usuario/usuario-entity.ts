@@ -2,9 +2,7 @@
 
 import {BeforeInsert, Column, Entity, Index, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {TiendaEntity} from "../tienda/tienda.entity";
-
 import {Roles_por_usuarioEntity} from "../roles_por_usuario/roles_por_usuario.entity";
-
 
 @Entity('db_usuario')
 export class UsuarioEntity {
@@ -12,19 +10,17 @@ export class UsuarioEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-
-    @Index()
+    // @Index()
     @Column(
         {
             nullable: false,
-            name: 'username',
+            name: 'nombre',
             type: 'varchar',
             length: 50,
-
+            default: 'nombre'
         }
     )
-    username: string;
-
+    nombre: string;
 
     @Column({
         nullable: false,
@@ -34,46 +30,42 @@ export class UsuarioEntity {
     })
     correo: string;
 
+
+
     @Column({
         nullable: false,
-
-        name: 'fechaNacimiento',
-        type: 'varchar',
-        length: 50,
+        type: 'date',
     })
     fechaNacimiento: string;
-
     @Column({
-        nullable: true,
-        name: 'password',
+        nullable: false,
         type: 'varchar',
-        length: 50,
+        length: 16
     })
     password: string;
 
-
-
-
+    /*
     @BeforeInsert()
     antesDeInsertar() {
         console.log('Ejecutandome antes de insertar');
-        console.log(this.id);
-
     }
-
     @BeforeInsert()
     verificarFuncion() {
         console.log('Ejecuta despues de antes de insertar');
     }
+    */
 
-
-/*
     @OneToMany(
         type => TiendaEntity, // Tipo de Dato Un Usuario a muchos
         // Libros[]
-        libro => libro.usuario // Cual es el campo FK
+        tienda => tienda.usuario // Cual es el campo FK
     )
-    libros: TiendaEntity[];
+    tiendas: TiendaEntity[];
 
-*/
+    @OneToMany(
+        type => Roles_por_usuarioEntity,
+        roles_por_usuario => roles_por_usuario.usuario
+    )
+    roles_por_usuario: Roles_por_usuarioEntity[];
+
 }

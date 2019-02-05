@@ -8,7 +8,7 @@ export class UsuarioCreateDto {
     @IsString()
 
     @Length(5)
-    username:string;
+    nombre:string;
 
     @IsNotEmpty()
     @IsString()

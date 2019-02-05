@@ -17,8 +17,6 @@ export class TiendaEntity {
     })
     nombre: string;
 
-
-
     @Column({
         type: 'varchar',
         length: 50
@@ -41,7 +39,6 @@ export class TiendaEntity {
 
 
     @ManyToOne(
-
         type => UsuarioEntity, // Tipo relacion de muchos
         // a uno
         usuario => usuario.tiendas, // Campo donde nos guarda
@@ -50,10 +47,7 @@ export class TiendaEntity {
     // tienda.entity.ts
     @OneToMany(
         type => ProductoEntity,
-
-
         producto => producto.tiendaId
     )
-
     productos: ProductoEntity[];
 }

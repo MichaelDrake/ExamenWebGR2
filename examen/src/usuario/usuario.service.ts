@@ -80,7 +80,7 @@ export class UsuarioService {
                 // Si la busqueda contiene algo del nombre
                 const tieneAlgoEnElnombre = usuario
 
-                    .username.includes(busqueda); // True / False
+                    .nombre .includes(busqueda); // True / False
 
                 // Si la busqueda contiene algo de la bio
                 const tieneAlgoEnLaBio = usuario
@@ -94,13 +94,13 @@ export class UsuarioService {
 
     async login(username: string, password: string)
         : Promise<boolean> {
-        // 1) Buscar al usuario por username
+        // 1) Buscar al usuario por nombre
         // 2) Comparar si el password es igual al password
 
         const usuarioEncontrado = await this._usuarioRepository
             .findOne({
                 where: {
-                    username: username
+                    nombre: username
                 }
             });
         if (usuarioEncontrado) {
@@ -123,7 +123,7 @@ export class UsuarioService {
 export interface Usuario {
     id: number;
 
-    username: string;
+    nombre: string;
     correo: string;
     fechaNacimiento: string;
 
