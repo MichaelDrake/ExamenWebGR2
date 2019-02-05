@@ -2,7 +2,7 @@
 import {Body, Controller, ForbiddenException, Get, Param, Post, Query, Res, Session} from "@nestjs/common";
 import {Usuario, UsuarioService} from "./usuario.service";
 import {UsuarioEntity} from "./usuario-entity";
-import {Like} from "typeorm";
+import {FindManyOptions, Like} from 'typeorm';
 import {UsuarioCreateDto} from "./dto/usuario-create.dto";
 import {validate, ValidationError} from "class-validator";
 
@@ -22,10 +22,10 @@ export class UsuarioController {
         @Query('accion') accion: string,
         @Query('nombre') nombre: string,
         @Query('busqueda') busqueda: string,
-        @Session() sesion,
+        //@Session() sesion,
     ) {
 
-        if(sesion.usuario){
+        // if(sesion.usuario){
             let mensaje; // undefined
             let clase; // undefined
 
@@ -49,13 +49,13 @@ export class UsuarioController {
             let usuarios: UsuarioEntity[];
             if (busqueda) {
 
-                const consulta = {
+                const consulta: FindManyOptions<UsuarioEntity> = {
                     where: [
                         {
                             nombre: Like(`%${busqueda}%`)
                         },
                         {
-                            biografia: Like(`%${busqueda}%`)
+                            correo: Like(`%${busqueda}%`)
                         }
                     ]
                 };
@@ -88,9 +88,9 @@ export class UsuarioController {
                 esUsuario: esUsuario,
                 esAdministrador: esAdministrador
             });
-        }else{
-            throw new ForbiddenException({mensaje:'No puedes entrar'});
-        }
+        // }else{
+        //     throw new ForbiddenException({mensaje:'No puedes entrar'});
+        // }
 
 
 
