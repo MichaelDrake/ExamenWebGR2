@@ -187,7 +187,7 @@ export class UsuarioController {
 
             // const parametrosConsulta = `?accion=crear&username=${usuario.username}`;
 
-           response.redirect('/Usuario/crear-usuario');
+           response.redirect('/login');
 
         }
 
