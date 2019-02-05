@@ -1,120 +1,97 @@
-<style>
-    table, th, td {
-        border: 1px solid black;
-    }
-</style>
+<%- include('comunes/header',{titulo:titulo}) %>
 
-<% const existeMensaje = typeof mensaje !== "undefined" ? true : false; %>
-
-<% if(existeMensaje){ %>
-
-    <p>MENSAJE: <%= mensaje %></p>
-
-<% } %>
-<% var apellido = 'Eguez' %>
-<!-- h1 -> Header 1 -->
-<h1>  <%= nombre %> <%= apellido %>  </h1>
-<!-- p -> parrafo -->
-
-<!-- a -> anchor-->
+<div class="container">
 
 
-<script>
-    function holaMundo(evento) {
-        console.log(evento)
+    <h1>Gestión de Usuarios</h1>
+    <p>Buscar por nombre o correo</p>
 
-        evento.preventDefault();
-
-        const respuesta = confirm('¿Estas seguro?')
-
-        console.log('Hola mundo')
-    }
-
-    function borrar(evento){
-
-        const respuesta = confirm('¿Estas seguro?')
-
-        if(!respuesta){
-            event.preventDefault();
+    <script>
+        function borrar(evento) {
+            console.log(evento)
+            const respuesta = confirm('¿Estás seguro?')
+            if (!respuesta) {
+                evento.preventDefault()
+            }
+            console.log(respuesta)
         }
-
-    }
-
+    </script>
 
 
-</script>
+    <form action="/Usuario/inicio" method="get">
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="form-group">
+                    <label for="busqueda">Busqueda</label>
+                    <input class="form-control" id="busqueda" type="text" name="busqueda">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <button type="submit"
+                        class="btn btn-outline-info btn-buscar btn-block">Buscar
+                </button>
 
+            </div>
+        </div>
+    </form>
 
-<a href="http://www.google.com"
-   onclick="holaMundo(event)">
-    click
-</a>
+    <% const existeMensaje = typeof mensaje !== "undefined" ? true : false; %>
 
+    <% if(existeMensaje){ %>
 
-<form action="/Usuario/inicio"
-      method="get">
-
-    <div>
-        <label for="busqueda">Busqueda</label>
-        <input id="busqueda" type="text" name="busqueda">
+    <div class="animated fadeOut alert alert-<%= accion %>" role="alert">
+        MENSAJE: <%= mensaje %>
     </div>
 
-    <button type="submit">Buscar</button>
+    <% } %>
 
-</form>
+    <h2>Usuarios</h2>
 
+    <table class="table table-hover animated fadeInUp">
+        <caption>Lista de usuarios</caption>
+        <!--tr -> table row-->
+        <thead>
+        <tr>
+            <!--th = table header-->
+            <th width="25%">Nombre</th>
+            <th width="25%">Correo</th>
+            <th width="20%">Fecha Nacimiento</th>
+            <th width="30%">Acciones</th>
+        </tr>
+        </thead>
 
-<a href="/Usuario/crear-usuario">
-    <button>Crear Usuario</button>
-</a>
+        <% arreglo.forEach ((usuario) => { %>
+        <tr>
+            <td>
+                <%= usuario.nombre %>
+            </td>
+            <td>
+                <%= usuario.correo %>
+            </td>
+            <td>
+                <%= usuario.fechaNacimiento %>
+            </td>
+            <td>
+                <form action="/Usuario/borrar/<%= usuario.id %>" method="post">
+                    <!--<button type="button">Yo no</button>-->
+                    <!--<button>Yo tambien</button>-->
+                    <button onclick="borrar(event)" type="submit"
+                            class="btn btn-outline-danger btn-block">Eliminar
+                    </button>
 
+                </form>
+                <a href="/Usuario/actualizar-usuario/<%= usuario.id %>">
+                    <button type="button"
+                            class="btn btn-outline-info btn-block">Actualizar
+                    </button>
+                </a>
+            </td>
+        </tr>
+        <% }) %>
 
-<h2> Arreglo </h2>
-
-<!-- ul -> unordered list-->
-<!-- ol -> ordered list-->
-<!-- li -> list item -->
-<!--
-<ul>
-<% //arreglo.forEach((numero)=>{    %>
-    <li><%= // numero   %></li>
-<%    // })     %>
-</ul>
--->
-
-
-<table>
-    <!-- tr -> table row -->
-    <tr>
-        <!-- th -> table header -->
-        <th>Nombre</th>
-        <th>Biografía</th>
-        <th>Acciones</th>
-    </tr>
-    <!-- tr -> table row -->
-    <% arreglo.forEach((usuario)=>{ %>
-    <tr>
-        <!-- td -> table detail -->
-        <td><%= usuario.nombre %></td>
-        <td><%= usuario.biografia %></td>
-        <td>
-            <form action="/Usuario/borrar/<%= usuario.id %>"
-                  method="post"
-            >
-                <!--<button type="button">Yo no</button>-->
-                <!--<button>Yo si</button>-->
-                <button type="submit"
-                        onclick="borrar(event)">Eliminar</button>
-            </form>
-            <a href="/Usuario/actualizar-usuario/<%= usuario.id %>">
-                <button>Actualizar</button>
-            </a>
-        </td>
-    </tr>
-    <% }) %>
-</table>
-
-
+    </table>
+</div>
+<%- include('comunes/librerias') %>
 
 
 
