@@ -15,8 +15,6 @@ export class UsuarioCreateDto {
     @Length(5)
     correo:string;
 
-
-
     @IsNotEmpty()
     @IsString()
     @Length(5)
