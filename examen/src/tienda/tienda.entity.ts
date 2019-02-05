@@ -17,7 +17,31 @@ export class TiendaEntity {
     })
     nombre: string;
 
-   /* @ManyToOne(
+
+
+    @Column({
+        type: 'varchar',
+        length: 50
+    })
+    direccion: string;
+
+    @Column({
+        type: 'date',
+    })
+    fechaApertura: string;
+
+    @Column({
+        type: 'int',
+    })
+    RUC: number;
+    @Column({
+        type: 'boolean',
+    })
+    matriz: boolean;
+
+
+    @ManyToOne(
+
         type => UsuarioEntity, // Tipo relacion de muchos
         // a uno
         usuario => usuario.tiendas, // Campo donde nos guarda
@@ -26,7 +50,10 @@ export class TiendaEntity {
     // tienda.entity.ts
     @OneToMany(
         type => ProductoEntity,
-        producto => producto.libro
-    )*/
+
+
+        producto => producto.tiendaId
+    )
+
     productos: ProductoEntity[];
 }

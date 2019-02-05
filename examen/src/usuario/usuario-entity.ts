@@ -3,11 +3,15 @@
 import {BeforeInsert, Column, Entity, Index, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {TiendaEntity} from "../tienda/tienda.entity";
 
+import {Roles_por_usuarioEntity} from "../roles_por_usuario/roles_por_usuario.entity";
+
+
 @Entity('db_usuario')
 export class UsuarioEntity {
 
     @PrimaryGeneratedColumn()
     id: number;
+
 
     @Index()
     @Column(
@@ -21,6 +25,7 @@ export class UsuarioEntity {
     )
     username: string;
 
+
     @Column({
         nullable: false,
         name: 'correo',
@@ -31,6 +36,7 @@ export class UsuarioEntity {
 
     @Column({
         nullable: false,
+
         name: 'fechaNacimiento',
         type: 'varchar',
         length: 50,
@@ -52,12 +58,14 @@ export class UsuarioEntity {
     antesDeInsertar() {
         console.log('Ejecutandome antes de insertar');
         console.log(this.id);
+
     }
 
     @BeforeInsert()
     verificarFuncion() {
         console.log('Ejecuta despues de antes de insertar');
     }
+
 
 /*
     @OneToMany(

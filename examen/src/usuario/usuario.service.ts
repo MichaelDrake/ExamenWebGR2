@@ -18,18 +18,22 @@ export class UsuarioService {
     ) {
     }
 
+
    buscar(parametros?: FindManyOptions<UsuarioEntity>)
+
         : Promise<UsuarioEntity[]> {
         return this._usuarioRepository.find(parametros);
     }
 
     async crear(nuevoUsuario: Usuario): Promise<UsuarioEntity> {
-console.log(nuevoUsuario)
+
+
         // Instanciar una entidad -> .create()
         const usuarioEntity = this._usuarioRepository
             .create(nuevoUsuario);
 
         // Guardar una entidad en la BDD -> .save()
+
         console.log("va a guardar")
 
         const usuarioCreado = await this._usuarioRepository
@@ -37,6 +41,7 @@ console.log(nuevoUsuario)
 
 
         return usuarioCreado;
+
 
     }
 
@@ -50,7 +55,9 @@ console.log(nuevoUsuario)
         return this._usuarioRepository.save(usuarioEntity);
     }
 
+
    borrar(idUsuario: number): Promise<UsuarioEntity> {
+
 
         // CREA UNA INSTANCIA DE LA ENTIDAD
         const usuarioEntityAEliminar = this._usuarioRepository
@@ -72,11 +79,13 @@ console.log(nuevoUsuario)
 
                 // Si la busqueda contiene algo del nombre
                 const tieneAlgoEnElnombre = usuario
+
                     .username.includes(busqueda); // True / False
 
                 // Si la busqueda contiene algo de la bio
                 const tieneAlgoEnLaBio = usuario
                     .correo.includes(busqueda);// True / False
+
 
                 return tieneAlgoEnElnombre || tieneAlgoEnLaBio;
             }
@@ -113,8 +122,10 @@ console.log(nuevoUsuario)
 
 export interface Usuario {
     id: number;
+
     username: string;
     correo: string;
     fechaNacimiento: string;
+
     password?: string;
 }
