@@ -6,18 +6,27 @@ export class UsuarioCreateDto {
 
     @IsNotEmpty()
     @IsString()
-    @Length(3,15)
+
+    @Length(5)
     nombre:string;
 
     @IsNotEmpty()
     @IsString()
     @Length(5)
-    biografia:string;
+    correo:string;
 
-    @IsEmpty()
-    username:string;
 
-    @IsEmpty()
+
+    @IsNotEmpty()
+    @IsString()
+    @Length(5)
+
+    fechaNacimiento:string;
+
+
+    @IsNotEmpty()
+    @Length(5)
+
     password:string;
 
 }

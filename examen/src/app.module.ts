@@ -1,3 +1,4 @@
+
 import {Module} from '@nestjs/common';
 import {AppController} from './app.controller';
 import {AppService} from './app.service';
@@ -18,7 +19,7 @@ import {RollEntity} from "./rol/roll.entity";
             .forRoot({
                 type: 'mysql',
                 host: 'localhost',
-                port: 32783,
+                port: 3306,
                 username: 'root',
                 password: 'root',
                 database: 'web-examen',
@@ -39,6 +40,7 @@ import {RollEntity} from "./rol/roll.entity";
     ],
     controllers: [AppController],
     providers: [AppService],
+
 })
 export class AppModule {
 }

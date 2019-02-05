@@ -1,3 +1,5 @@
+
+
 import {Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {TiendaEntity} from "../tienda/tienda.entity";
 import {Evento_por_productoEntity} from "../evento_por_producto/evento_por_producto.entity";

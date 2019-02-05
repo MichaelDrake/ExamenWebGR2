@@ -14,7 +14,7 @@ export class UsuarioEntity {
     @Column(
         {
             nullable: false,
-            name: 'nombre_primero',
+            name: 'nombre',
             type: 'varchar',
             length: 50,
             default: 'nombre'
@@ -30,6 +30,13 @@ export class UsuarioEntity {
     })
     correo: string;
 
+
+
+    @Column({
+        nullable: false,
+        type: 'date',
+    })
+    fechaNacimiento: string;
     @Column({
         nullable: false,
         type: 'varchar',
@@ -37,18 +44,11 @@ export class UsuarioEntity {
     })
     password: string;
 
-    @Column({
-        nullable: false,
-        type: 'date',
-    })
-    fechaNacimiento: string;
-
     /*
     @BeforeInsert()
     antesDeInsertar() {
         console.log('Ejecutandome antes de insertar');
     }
-
     @BeforeInsert()
     verificarFuncion() {
         console.log('Ejecuta despues de antes de insertar');

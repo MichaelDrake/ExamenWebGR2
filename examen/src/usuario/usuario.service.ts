@@ -7,21 +7,7 @@ import {FindManyOptions} from "../../node_modules/typeorm/find-options/FindManyO
 @Injectable()
 export class UsuarioService {
     usuarios: Usuario[] = [
-        {
-            nombre: 'Adrian',
-            biografia: 'Doctor',
-            id: 1
-        },
-        {
-            nombre: 'Vicente',
-            biografia: 'Maestro',
-            id: 2
-        },
-        {
-            nombre: 'Carolina',
-            biografia: 'Diseñadora',
-            id: 3
-        }
+
     ];
     registroActual = 4;
 
@@ -32,22 +18,31 @@ export class UsuarioService {
     ) {
     }
 
-    buscar(parametros?: FindManyOptions<UsuarioEntity>)
+
+   buscar(parametros?: FindManyOptions<UsuarioEntity>)
+
         : Promise<UsuarioEntity[]> {
         return this._usuarioRepository.find(parametros);
     }
 
     async crear(nuevoUsuario: Usuario): Promise<UsuarioEntity> {
 
+
         // Instanciar una entidad -> .create()
         const usuarioEntity = this._usuarioRepository
             .create(nuevoUsuario);
 
         // Guardar una entidad en la BDD -> .save()
+
+        console.log("va a guardar")
+
         const usuarioCreado = await this._usuarioRepository
             .save(usuarioEntity);
 
+
         return usuarioCreado;
+
+
     }
 
     actualizar(idUsuario: number,
@@ -60,7 +55,9 @@ export class UsuarioService {
         return this._usuarioRepository.save(usuarioEntity);
     }
 
-    borrar(idUsuario: number): Promise<UsuarioEntity> {
+
+   borrar(idUsuario: number): Promise<UsuarioEntity> {
+
 
         // CREA UNA INSTANCIA DE LA ENTIDAD
         const usuarioEntityAEliminar = this._usuarioRepository
@@ -82,11 +79,13 @@ export class UsuarioService {
 
                 // Si la busqueda contiene algo del nombre
                 const tieneAlgoEnElnombre = usuario
-                    .nombre.includes(busqueda); // True / False
+
+                    .nombre .includes(busqueda); // True / False
 
                 // Si la busqueda contiene algo de la bio
                 const tieneAlgoEnLaBio = usuario
-                    .biografia.includes(busqueda);// True / False
+                    .correo.includes(busqueda);// True / False
+
 
                 return tieneAlgoEnElnombre || tieneAlgoEnLaBio;
             }
@@ -95,13 +94,13 @@ export class UsuarioService {
 
     async login(username: string, password: string)
         : Promise<boolean> {
-        // 1) Buscar al usuario por username
+        // 1) Buscar al usuario por nombre
         // 2) Comparar si el password es igual al password
 
         const usuarioEncontrado = await this._usuarioRepository
             .findOne({
                 where: {
-                    username: username
+                    nombre: username
                 }
             });
         if (usuarioEncontrado) {
@@ -123,8 +122,10 @@ export class UsuarioService {
 
 export interface Usuario {
     id: number;
+
     nombre: string;
-    biografia: string;
-    username?: string;
+    correo: string;
+    fechaNacimiento: string;
+
     password?: string;
 }
