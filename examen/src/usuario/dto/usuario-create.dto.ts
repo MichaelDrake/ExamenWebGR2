@@ -1,6 +1,19 @@
 // usuario-crate.dto.ts
 
-import {Contains,IsAlphanumeric, IsLowercase, IsUppercase, IsEmail, IsDate, IsEmpty, IsNotEmpty, IsString, Length} from "class-validator";
+import {
+    MinDate,
+    Contains,
+    IsAlphanumeric,
+    IsLowercase,
+    IsUppercase,
+    IsEmail,
+    IsDate,
+    IsEmpty,
+    IsNotEmpty,
+    IsString,
+    Length,
+    IsDateString
+} from "class-validator";
 
 export class UsuarioCreateDto {
 
@@ -8,6 +21,7 @@ export class UsuarioCreateDto {
     @IsString()
     @Length(5,50)
     nombre:string;
+
 
     @IsNotEmpty()
     @IsEmail()
@@ -17,15 +31,20 @@ export class UsuarioCreateDto {
 
 
     @IsNotEmpty()
-    @IsDate()
-    @Length(5,10)
-
+    //@IsDate()
     fechaNacimiento:string;
+    // @Length(5,10)
 
 
     @IsNotEmpty()
     @Length(8,16)
     @IsAlphanumeric()
     password:string;
-
 }
+
+
+
+
+
+
+

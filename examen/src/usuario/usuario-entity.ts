@@ -34,7 +34,7 @@ export class UsuarioEntity {
 
     @Column({
         nullable: false,
-        type: 'date',
+        type: 'varchar',
     })
     fechaNacimiento: string;
     @Column({
