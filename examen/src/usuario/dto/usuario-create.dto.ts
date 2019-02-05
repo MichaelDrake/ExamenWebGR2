@@ -1,6 +1,6 @@
 // usuario-crate.dto.ts
 
-import {IsEmpty, IsNotEmpty, IsString, Length} from "class-validator";
+import {IsDate, IsEmpty, IsNotEmpty, IsString, Length} from "class-validator";
 
 export class UsuarioCreateDto {
 
@@ -18,7 +18,7 @@ export class UsuarioCreateDto {
 
 
     @IsNotEmpty()
-    @IsString()
+    @IsDate()
     @Length(5)
 
     fechaNacimiento:string;
