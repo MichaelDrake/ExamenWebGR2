@@ -11,6 +11,7 @@ import {Evento_por_productoEntity} from "./evento_por_producto/evento_por_produc
 import {VentaEntity} from "./venta/venta.entity";
 import {Roles_por_usuarioEntity} from "./roles_por_usuario/roles_por_usuario.entity";
 import {RollEntity} from "./rol/roll.entity";
+import {VentaModule} from "./venta/venta.module";
 
 
 @Module({
@@ -36,6 +37,7 @@ import {RollEntity} from "./rol/roll.entity";
                 ]
             }),
         UsuarioModule,
+        VentaModule
   ],
   controllers: [AppController],
   providers: [AppService],
