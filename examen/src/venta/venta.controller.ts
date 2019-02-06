@@ -70,6 +70,31 @@ export class VentaController {
 
 
     }
+    @Get('ventas-publico')
+    async ventasPublico(
+        @Res() response,
+        @Query('busqueda') busqueda: string,
+    ) {
+        let ventas: VentaEntity[];
+        if (busqueda) {
+
+            const consulta: FindManyOptions<VentaEntity> = {
+                where: [
+                    {
+                        nombre: Like(`%${busqueda}%`)
+                    },
+                ]
+            };
+            ventas = await this._ventaService.buscar(consulta);
+        } else {
+            ventas = await this._ventaService.buscar();
+        }
+
+        response.render('ventas-publico', {
+            arreglo: ventas,
+            titulo: 'Ventas al Público',
+        });
+    }
 
     // @Get(':id/ver-productos')
 

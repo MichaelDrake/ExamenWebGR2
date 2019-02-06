@@ -115,13 +115,26 @@ export class UsuarioController {
 
     @Get('crear-usuario')
     crearUsuario(
-        @Res() response
+        @Res() response,
+        @Query('error') error: string,
     ) {
-        response.render(
+        if(error){
+            response.render(
 
-            'registrarse'
+                'crear-usuario', {
+                    error: error,
+                }
 
-        )
+            )
+        }
+        else {
+            response.render(
+
+                'crear-usuario'
+
+            )
+        }
+
     }
     @Get('rol')
     mostrarRoles(
@@ -169,7 +182,6 @@ export class UsuarioController {
 
     }
 
-
     @Post('crear-usuario')
     async crearUsuarioFormulario(
         @Body() usuario: Usuario,
@@ -189,7 +201,10 @@ export class UsuarioController {
 
         if (hayErrores) {
             console.error(errores);
-            response.redirect('/Usuario/crear-usuario?error=Hay errores');
+            response.render('crear-usuario', {
+                error: 'errores',
+            });
+            // response.redirect('/Usuario/crear-usuario?error=Hay errores');
 
         } else {
             await this._usuarioService.crear(usuario);
