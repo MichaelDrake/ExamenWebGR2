@@ -111,6 +111,13 @@ export class AppController {
         response.render('login');
     }
 
+    @Get('tienda')
+    tiendaVista(
+        @Res() response
+    ) {
+        response.render('tienda');
+    }
+
 
     @Get('logout')
     logout(

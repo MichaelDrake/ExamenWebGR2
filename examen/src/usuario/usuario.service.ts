@@ -1,8 +1,8 @@
-import {Injectable} from "@nestjs/common";
-import {Repository} from "typeorm";
+import {Injectable} from '@nestjs/common';
+import {Repository} from 'typeorm';
 import {InjectRepository} from '@nestjs/typeorm';
-import {UsuarioEntity} from "./usuario-entity";
-import {FindManyOptions} from "../../node_modules/typeorm/find-options/FindManyOptions";
+import {UsuarioEntity} from './usuario-entity';
+import {FindManyOptions} from '../../node_modules/typeorm/find-options/FindManyOptions';
 
 @Injectable()
 export class UsuarioService {
@@ -18,7 +18,6 @@ export class UsuarioService {
     ) {
     }
 
-
    buscar(parametros?: FindManyOptions<UsuarioEntity>)
 
         : Promise<UsuarioEntity[]> {
@@ -27,21 +26,18 @@ export class UsuarioService {
 
     async crear(nuevoUsuario: Usuario): Promise<UsuarioEntity> {
 
-
         // Instanciar una entidad -> .create()
         const usuarioEntity = this._usuarioRepository
             .create(nuevoUsuario);
 
         // Guardar una entidad en la BDD -> .save()
 
-        console.log("va a guardar")
+        console.log('va a guardar');
 
         const usuarioCreado = await this._usuarioRepository
             .save(usuarioEntity);
 
-
         return usuarioCreado;
-
 
     }
 
@@ -55,18 +51,15 @@ export class UsuarioService {
         return this._usuarioRepository.save(usuarioEntity);
     }
 
-
    borrar(idUsuario: number): Promise<UsuarioEntity> {
-
 
         // CREA UNA INSTANCIA DE LA ENTIDAD
         const usuarioEntityAEliminar = this._usuarioRepository
             .create({
-                id: idUsuario
+                id: idUsuario,
             });
 
-
-        return this._usuarioRepository.remove(usuarioEntityAEliminar)
+        return this._usuarioRepository.remove(usuarioEntityAEliminar);
     }
 
     buscarPorId(idUsuario: number): Promise<UsuarioEntity> {
@@ -84,12 +77,11 @@ export class UsuarioService {
 
                 // Si la busqueda contiene algo de la bio
                 const tieneAlgoEnLaBio = usuario
-                    .correo.includes(busqueda);// True / False
-
+                    .correo.includes(busqueda); // True / False
 
                 return tieneAlgoEnElnombre || tieneAlgoEnLaBio;
-            }
-        )
+            },
+        );
     }
 
     async login(username: string, password: string)
@@ -100,8 +92,8 @@ export class UsuarioService {
         const usuarioEncontrado = await this._usuarioRepository
             .findOne({
                 where: {
-                    nombre: username
-                }
+                    nombre: username,
+                },
             });
         if (usuarioEncontrado) {
 
@@ -114,7 +106,6 @@ export class UsuarioService {
         } else {
             return false;
         }
-
 
     }
 
