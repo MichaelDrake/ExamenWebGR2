@@ -61,7 +61,7 @@ export class VentaController {
             ventas = await this._ventaService.buscar();
         }
 
-        response.render('inicio', {
+        response.render('ventas', {
             nombre: '',
             arreglo: ventas,
             mensaje: mensaje,

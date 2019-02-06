@@ -134,7 +134,7 @@ export class UsuarioController {
         )
     }
 
-    @Get('actualizar-usuario/:idUsuario')
+    @Get('actualizar-rol/:idUsuario')
     async actualizarUsuario(
         @Param('idUsuario') idUsuario: string,
         @Res() response
@@ -144,7 +144,7 @@ export class UsuarioController {
             .buscarPorId(Number(idUsuario));
 
         response.render(
-            'crear-usuario', {
+            'rol', {
                 usuario: usuarioAActualizar
             }
         )
