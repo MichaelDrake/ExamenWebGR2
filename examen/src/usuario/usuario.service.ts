@@ -97,10 +97,27 @@ export class UsuarioService {
     // 1) Buscar al usuario por nombre
     // 2) Comparar si el password es igual al password
 
-    const usuarioEncontrado = await this._usuarioRepository
-      .findOne({
-        where: {
-          nombre: nombre
+    async login(nombre: string, password: string)
+        : Promise<boolean> {
+        // 1) Buscar al usuario por nombre
+        // 2) Comparar si el password es igual al password
+
+        const usuarioEncontrado = await this._usuarioRepository
+            .findOne({
+                where: {
+                    nombre: nombre
+                }
+            });
+        if (usuarioEncontrado) {
+
+            if (usuarioEncontrado.password === password) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } else {
+            return false;
         }
       });
     if (usuarioEncontrado) {
