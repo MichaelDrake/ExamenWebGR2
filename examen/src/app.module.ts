@@ -8,7 +8,7 @@ import {TiendaEntity} from "./tienda/tienda.entity";
 import {ProductoEntity} from "./producto/producto.entity";
 import {UsuarioModule} from "./usuario/usuario.module";
 import {Evento_por_productoEntity} from "./evento_por_producto/evento_por_producto.entity";
-import {EventoEntity} from "./evento/evento.entity";
+import {VentaEntity} from "./venta/venta.entity";
 import {Roles_por_usuarioEntity} from "./roles_por_usuario/roles_por_usuario.entity";
 import {RollEntity} from "./rol/roll.entity";
 
@@ -19,10 +19,10 @@ import {RollEntity} from "./rol/roll.entity";
             .forRoot({
                 type: 'mysql',
                 host: '192.168.99.100',
-                port: 32809,
-                username: 'web',
-                password: 'asdf1234',
-                database: 'tienda',
+                port: 32769,
+                username: 'root',
+                password: 'root',
+                database: 'web-examen',
                 synchronize: true,
                 dropSchema: false,
                 entities: [
@@ -30,16 +30,15 @@ import {RollEntity} from "./rol/roll.entity";
                     TiendaEntity,
                     ProductoEntity,
                     Evento_por_productoEntity,
-                    EventoEntity,
+                    VentaEntity,
                     Roles_por_usuarioEntity,
                     RollEntity
                 ]
             }),
         UsuarioModule,
-
-    ],
-    controllers: [AppController],
-    providers: [AppService],
+  ],
+  controllers: [AppController],
+  providers: [AppService],
 
 })
 export class AppModule {

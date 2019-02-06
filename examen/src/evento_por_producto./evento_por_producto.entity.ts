@@ -1,5 +1,5 @@
 import {Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
-import {EventoEntity} from "../evento/evento.entity";
+import {VentaEntity} from "../venta/venta.entity";
 import {ProductoEntity} from "../producto/producto.entity";
 
 @Entity('db_evento_por_producto')
@@ -10,10 +10,10 @@ export class Evento_por_productoEntity {
     numeroProducto: number;
 
     @ManyToOne(
-        type => EventoEntity,
+        type => VentaEntity,
         evento => evento.eventosPorProducto
     )
-    tabla_evento: EventoEntity;
+    tabla_evento: VentaEntity;
 
     @ManyToOne(
         type => ProductoEntity,
