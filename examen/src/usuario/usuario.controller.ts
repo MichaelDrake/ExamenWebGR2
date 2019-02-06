@@ -123,6 +123,16 @@ export class UsuarioController {
 
         )
     }
+    @Get('rol')
+    mostrarRoles(
+        @Res() response
+    ) {
+        response.render(
+
+            'rol'
+
+        )
+    }
 
     @Get('actualizar-usuario/:idUsuario')
     async actualizarUsuario(

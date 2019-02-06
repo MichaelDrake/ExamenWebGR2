@@ -1,0 +1,58 @@
+<%- include('comunes/header',{titulo:'Gestion de Roles'}) %>
+
+<body>
+<div class="container">
+
+
+    <h1 align="center"><span>Administración de Roles</span><br></h1>
+    <p align="center">Mensajes.</p>
+    <div class="alert alert-secondary" role="alert" align="center">
+        Mensajes Aqui!
+    </div>
+
+    <div class="section">
+        <table class="table">
+            <thead align="center">
+            <th scope="col">USUARIO</th>
+            <th scope="col">ROLES</th>
+            <th scope="col">ASIGNACION</th>
+            </thead>
+            <tbody align="center">
+            <tr>
+                <td align="center"><div class="card" style="width: 18rem;">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Nombre</li>
+                            <li class="list-group-item">Correo</li>
+                            <li class="list-group-item">Fecha</li>
+                        </ul>
+                    </div></td>
+
+                <td align="center"><div class="card" style="width: 18rem;">
+                        <ul class="list-group list-group-flush">
+                            <li  class="list-group-item">Administrador <h1 align="center"><span><input class="btn btn-primary" type="submit" value="X"></span></h1></li>
+                            <li class="list-group-item">Usuario <h1 align="center"><span><input class="btn btn-primary" type="submit" value="X"></span></h1></li>
+                        </ul>
+                    </div></td>
+                <td align="center"><div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            ROL
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+</div>
+
+<%- include('comunes/librerias') %>
+
+</body>
+</html>
