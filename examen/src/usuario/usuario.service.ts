@@ -92,7 +92,7 @@ export class UsuarioService {
         )
     }
 
-    async login(username: string, password: string)
+    async login(nombre: string, password: string)
         : Promise<boolean> {
         // 1) Buscar al usuario por nombre
         // 2) Comparar si el password es igual al password
@@ -100,7 +100,7 @@ export class UsuarioService {
         const usuarioEncontrado = await this._usuarioRepository
             .findOne({
                 where: {
-                    nombre: username
+                    nombre: nombre
                 }
             });
         if (usuarioEncontrado) {
