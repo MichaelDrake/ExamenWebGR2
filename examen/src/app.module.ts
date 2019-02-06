@@ -36,10 +36,9 @@ import {RollEntity} from "./rol/roll.entity";
                 ]
             }),
         UsuarioModule,
-
-    ],
-    controllers: [AppController],
-    providers: [AppService],
+  ],
+  controllers: [AppController],
+  providers: [AppService],
 
 })
 export class AppModule {

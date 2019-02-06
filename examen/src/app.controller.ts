@@ -89,15 +89,17 @@ export class AppController {
     @Post('login')
     @HttpCode(200)
     async loginMetodo(
-        @Body('username') username: string,
+        @Body('nombre') nombre: string,
         @Body('password') password: string,
         @Res() response,
         @Session() sesion
     ) {
+        console.log(nombre);
         const identificado = await this._usuarioService
-            .login(username, password);
+            .login(nombre, password);
+        console.log(identificado);
         if (identificado) {
-            sesion.usuario = username;
+            sesion.usuario = nombre;
             response.redirect('/Usuario/inicio')
         } else {
             throw new BadRequestException({mensaje: 'Error login'})
@@ -109,6 +111,13 @@ export class AppController {
         @Res() response
     ) {
         response.render('login');
+    }
+
+    @Get('tienda')
+    tiendaVista(
+        @Res() response
+    ) {
+        response.render('tienda');
     }
 
 
