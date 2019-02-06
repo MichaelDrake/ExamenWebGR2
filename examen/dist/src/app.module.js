@@ -26,8 +26,8 @@ AppModule = __decorate([
             typeorm_1.TypeOrmModule
                 .forRoot({
                 type: 'mysql',
-                host: '192.168.99.100',
-                port: 32769,
+                host: 'localhost',
+                port: 3306,
                 username: 'root',
                 password: 'root',
                 database: 'web-examen',
@@ -40,8 +40,8 @@ AppModule = __decorate([
                     evento_por_producto_entity_1.Evento_por_productoEntity,
                     evento_entity_1.EventoEntity,
                     roles_por_usuario_entity_1.Roles_por_usuarioEntity,
-                    roll_entity_1.RollEntity,
-                ],
+                    roll_entity_1.RollEntity
+                ]
             }),
             usuario_module_1.UsuarioModule,
         ],
