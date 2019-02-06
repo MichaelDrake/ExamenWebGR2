@@ -47,12 +47,14 @@ let AppController = class AppController {
     saludarObservable() {
         return rxjs_1.of('Hola mundo');
     }
-    loginMetodo(username, password, response, sesion) {
+    loginMetodo(nombre, password, response, sesion) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(nombre);
             const identificado = yield this._usuarioService
-                .login(username, password);
+                .login(nombre, password);
+            console.log(identificado);
             if (identificado) {
-                sesion.usuario = username;
+                sesion.usuario = nombre;
                 response.redirect('/saludar');
             }
             else {
@@ -113,7 +115,7 @@ __decorate([
 __decorate([
     common_1.Post('login'),
     common_1.HttpCode(200),
-    __param(0, common_1.Body('username')),
+    __param(0, common_1.Body('nombre')),
     __param(1, common_1.Body('password')),
     __param(2, common_1.Res()),
     __param(3, common_1.Session()),

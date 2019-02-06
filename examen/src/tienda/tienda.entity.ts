@@ -1,8 +1,8 @@
 // tienda.entity.ts
 
-import {Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
-import {UsuarioEntity} from "../usuario/usuario-entity";
-import {ProductoEntity} from "../producto/producto.entity";
+import { Column, Entity, Index, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {UsuarioEntity} from '../usuario/usuario-entity';
+import {ProductoEntity} from '../producto/producto.entity';
 
 @Entity('db_tienda')
 export class TiendaEntity {
@@ -10,16 +10,17 @@ export class TiendaEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
+    @Index()
     @Column({
         name: 'nombre',
         type: 'varchar',
-        length: 50
+        length: 50,
     })
     nombre: string;
 
     @Column({
         type: 'varchar',
-        length: 50
+        length: 50,
     })
     direccion: string;
 
@@ -37,7 +38,6 @@ export class TiendaEntity {
     })
     matriz: boolean;
 
-
     @ManyToOne(
         type => UsuarioEntity, // Tipo relacion de muchos
         // a uno
@@ -47,7 +47,7 @@ export class TiendaEntity {
     // tienda.entity.ts
     @OneToMany(
         type => ProductoEntity,
-        producto => producto.tiendaId
+        producto => producto.tiendaId,
     )
     productos: ProductoEntity[];
 }

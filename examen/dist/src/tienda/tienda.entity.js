@@ -19,17 +19,18 @@ __decorate([
     __metadata("design:type", Number)
 ], TiendaEntity.prototype, "id", void 0);
 __decorate([
+    typeorm_1.Index(),
     typeorm_1.Column({
         name: 'nombre',
         type: 'varchar',
-        length: 50
+        length: 50,
     }),
     __metadata("design:type", String)
 ], TiendaEntity.prototype, "nombre", void 0);
 __decorate([
     typeorm_1.Column({
         type: 'varchar',
-        length: 50
+        length: 50,
     }),
     __metadata("design:type", String)
 ], TiendaEntity.prototype, "direccion", void 0);
