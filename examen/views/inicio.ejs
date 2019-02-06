@@ -1,5 +1,7 @@
 <%- include('comunes/header',{titulo:titulo}) %>
 
+
+<body>
 <div class="container">
 
 
@@ -17,6 +19,32 @@
         }
     </script>
 
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <form action="/Usuario/inicio" method="get">
         <div class="row">
@@ -39,9 +67,9 @@
 
     <% if(existeMensaje){ %>
 
-    <div class="animated fadeOut alert alert-<%= accion %>" role="alert">
-        MENSAJE: <%= mensaje %>
-    </div>
+        <div class="animated fadeOut alert alert-<%= accion %>" role="alert">
+            MENSAJE: <%= mensaje %>
+        </div>
 
     <% } %>
 
@@ -61,38 +89,39 @@
         </thead>
 
         <% arreglo.forEach ((usuario) => { %>
-        <tr>
-            <td>
-                <%= usuario.nombre %>
-            </td>
-            <td>
-                <%= usuario.correo %>
-            </td>
-            <td>
-                <%= usuario.fechaNacimiento %>
-            </td>
-            <td>
-                <form action="/Usuario/borrar/<%= usuario.id %>" method="post">
-                    <!--<button type="button">Yo no</button>-->
-                    <!--<button>Yo tambien</button>-->
-                    <button onclick="borrar(event)" type="submit"
-                            class="btn btn-outline-danger btn-block">Eliminar
-                    </button>
+            <tr>
+                <td>
+                    <%= usuario.nombre %>
+                </td>
+                <td>
+                    <%= usuario.correo %>
+                </td>
+                <td>
+                    <%= usuario.fechaNacimiento %>
+                </td>
+                <td>
+                    <form action="/Usuario/borrar/<%= usuario.id %>" method="post">
+                        <!--<button type="button">Yo no</button>-->
+                        <!--<button>Yo tambien</button>-->
+                        <button onclick="borrar(event)" type="submit"
+                                class="btn btn-outline-danger btn-block">Eliminar
+                        </button>
 
-                </form>
-                <a href="/Usuario/actualizar-usuario/<%= usuario.id %>">
-                    <button type="button"
-                            class="btn btn-outline-info btn-block">Actualizar
-                    </button>
-                </a>
-            </td>
-        </tr>
+                    </form>
+                    <a href="/Usuario/actualizar-usuario/<%= usuario.id %>">
+                        <button type="button"
+                                class="btn btn-outline-info btn-block">Actualizar
+                        </button>
+                    </a>
+                </td>
+            </tr>
         <% }) %>
 
     </table>
 </div>
 <%- include('comunes/librerias') %>
-
+</body>
+</html>
 
 
 

@@ -1,0 +1,104 @@
+<%- include('comunes/header',{titulo:Ventas}) %>
+
+<div class="container">
+
+
+    <h1>Gestión de Ventas</h1>
+    <p>Buscar por nombre</p>
+
+    <script>
+        function borrar(evento) {
+            console.log(evento)
+            const respuesta = confirm('¿Estás seguro?')
+            if (!respuesta) {
+                evento.preventDefault()
+            }
+            console.log(respuesta)
+        }
+    </script>
+
+
+    <form action="/Venta/ventas" method="get">
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="form-group">
+                    <label for="busqueda">Busqueda</label>
+                    <input class="form-control" id="busqueda" type="text" name="busqueda">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <button type="submit"
+                            class="btn btn-outline-info btn-buscar btn-block">Buscar
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="col-sm-9"></div>
+        <div class="col-sm-3">
+            <a href="/Venta/crear-venta">
+                <button class="btn btn-outline-success btn-espaciado btn-block">
+                    Crear Venta
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <% const existeMensaje = typeof mensaje !== "undefined" ? true : false; %>
+
+    <% if(existeMensaje){ %>
+
+        <div class="animated fadeOut alert alert-<%= accion %>" role="alert">
+            MENSAJE: <%= mensaje %>
+        </div>
+
+    <% } %>
+
+    <h2>Ventas</h2>
+
+    <table class="table table-hover animated fadeInUp">
+        <caption>Lista de ventas</caption>
+        <!--tr -> table row-->
+        <thead>
+        <tr>
+            <!--th = table header-->
+            <th width="40%">Descripción de la Venta</th>
+            <th width="30%">Fecha de la Venta</th>
+            <th width="30%">Acciones</th>
+        </tr>
+        </thead>
+
+        <% arreglo.forEach ((venta) => { %>
+            <tr>
+                <td>
+                    <%= venta.nombre %>
+                </td>
+                <td>
+                    <%= venta.fecha %>
+                </td>
+                <td>
+                    <form action="/Venta/borrar/<%= venta.id %>" method="post">
+                        <!--<button type="button">Yo no</button>-->
+                        <!--<button>Yo tambien</button>-->
+                        <button onclick="borrar(event)" type="submit"
+                                class="btn btn-outline-danger btn-block">Eliminar
+                        </button>
+
+                    </form>
+                    <a href="/Venta/actualizar-venta/<%= venta.id %>">
+                        <button type="button"
+                                class="btn btn-outline-info btn-block">Actualizar
+                        </button>
+                    </a>
+                </td>
+            </tr>
+        <% }) %>
+
+    </table>
+</div>
+<%- include('comunes/librerias') %>
+</html>

@@ -2,7 +2,7 @@ import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {Evento_por_productoEntity} from "../evento_por_producto/evento_por_producto.entity";
 
 @Entity('db_evento')
-export class EventoEntity {
+export class VentaEntity {
 
     @PrimaryGeneratedColumn()
     id: number;
