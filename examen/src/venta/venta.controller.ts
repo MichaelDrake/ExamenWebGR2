@@ -3,7 +3,6 @@ import {Body, Controller, Get, Param, Post, Query, Res} from "@nestjs/common";
 import {FindManyOptions, Like} from "typeorm";
 import {VentaEntity} from "./venta.entity";
 import {Venta} from "./venta.service";
-import {validate, ValidationError} from "class-validator";
 
 @Controller('Venta')
 export class VentaController {
@@ -13,8 +12,8 @@ export class VentaController {
 
     }
 
-    @Get('inicio')
-    async inicio(
+    @Get('ventas')
+    async ventas(
         @Res() response,
         @Query('accion') accion: string,
         @Query('nombre') nombre: string,
@@ -51,9 +50,6 @@ export class VentaController {
                     {
                         nombre: Like(`%${busqueda}%`)
                     },
-                    {
-                        correo: Like(`%${busqueda}%`)
-                    }
                 ]
             };
             ventas = await this._ventaService.buscar(consulta);
@@ -75,6 +71,8 @@ export class VentaController {
 
     }
 
+    // @Get(':id/ver-productos')
+
     @Post('borrar/:idVenta')
     async borrar(
         @Param('idVenta') idVenta: string,
@@ -89,15 +87,15 @@ export class VentaController {
         const parametrosConsulta = `?accion=borrar&nombre=${ventaEncontrado.nombre}`;
 
 
-        response.redirect('/Venta/inicio' + parametrosConsulta);
+        response.redirect('/Venta/ventas' + parametrosConsulta);
     }
 
     @Get('crear-venta')
-    crearVenta(
+    crearUsuario(
         @Res() response
     ) {
         response.render(
-            'registrarse'
+            'crear-venta'
         )
     }
 
@@ -132,22 +130,22 @@ export class VentaController {
         const parametrosConsulta = `?accion=actualizar&nombre=${venta.nombre}`;
 
 
-        response.redirect('/Venta/inicio' + parametrosConsulta);
+        response.redirect('/Venta/ventas' + parametrosConsulta);
 
     }
 
 
     @Post('crear-venta')
-    async crearVentaFormulario(
+    crearVentaFormulario(
         @Body() venta: Venta,
         @Res() response
     ) {
-        await this._ventaService.crear(venta);
+        this._ventaService.crear(venta);
 
 
         const parametrosConsulta = `?accion=crear&nombre=${venta.nombre}`;
 
-        response.redirect('/Venta/inicio' + parametrosConsulta);
+        response.redirect('/Venta/ventas' + parametrosConsulta);
 
 
     }

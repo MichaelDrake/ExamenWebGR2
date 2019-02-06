@@ -17,10 +17,10 @@ export class VentaService {
     }
 
 
-    buscar(parametros?: FindManyOptions<VentaEntity>)
+    async buscar(parametros?: FindManyOptions<VentaEntity>)
 
         : Promise<VentaEntity[]> {
-        return this._ventaRepository.find(parametros);
+        return await this._ventaRepository.find(parametros);
     }
 
     async crear(nuevaVenta: Venta): Promise<VentaEntity> {
@@ -48,11 +48,11 @@ export class VentaService {
     }
 
 
-    borrar(idVenta: number): Promise<VentaEntity> {
+    async borrar(idVenta: number): Promise<VentaEntity> {
 
 
         // CREA UNA INSTANCIA DE LA ENTIDAD
-        const ventaEntityAEliminar = this._ventaRepository
+        const ventaEntityAEliminar = await this._ventaRepository
             .create({
                 id: idVenta
             });
