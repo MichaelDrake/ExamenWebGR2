@@ -142,10 +142,12 @@ export class UsuarioController {
         const usuarioAActualizar = await this
             ._usuarioService
             .buscarPorId(Number(idUsuario));
-
         response.render(
+
             'rol', {
-                usuario: usuarioAActualizar
+                usuario: usuarioAActualizar,
+                info: console.log(usuarioAActualizar)
+
             }
         )
     }
