@@ -3,6 +3,7 @@ import {UsuarioController} from "../usuario/usuario.controller";
 import {TypeOrmModule} from "@nestjs/typeorm";
 import {VentaEntity} from "./venta.entity";
 import {VentaService} from "./venta.service";
+import {VentaController} from "./venta.controller";
 
 @Module({
     imports: [
@@ -15,7 +16,7 @@ import {VentaService} from "./venta.service";
             )
     ],
     controllers: [
-        // UsuarioController
+        VentaController
     ],
     providers: [
         VentaService
