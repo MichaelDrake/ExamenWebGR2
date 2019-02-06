@@ -114,10 +114,7 @@ export class UsuarioService {
     } else {
       return false;
     }
-
-
   }
-
 }
 
 export interface Usuario {
