@@ -115,16 +115,39 @@ export class UsuarioController {
 
     @Get('crear-usuario')
     crearUsuario(
+        @Res() response,
+        @Query('error') error: string,
+    ) {
+        if(error){
+            response.render(
+
+                'crear-usuario', {
+                    error: error,
+                }
+
+            )
+        }
+        else {
+            response.render(
+
+                'crear-usuario'
+
+            )
+        }
+
+    }
+    @Get('rol')
+    mostrarRoles(
         @Res() response
     ) {
         response.render(
 
-            'registrarse'
+            'rol'
 
         )
     }
 
-    @Get('actualizar-usuario/:idUsuario')
+    @Get('actualizar-rol/:idUsuario')
     async actualizarUsuario(
         @Param('idUsuario') idUsuario: string,
         @Res() response
@@ -134,7 +157,7 @@ export class UsuarioController {
             .buscarPorId(Number(idUsuario));
 
         response.render(
-            'crear-usuario', {
+            'rol', {
                 usuario: usuarioAActualizar
             }
         )
@@ -159,7 +182,6 @@ export class UsuarioController {
 
     }
 
-
     @Post('crear-usuario')
     async crearUsuarioFormulario(
         @Body() usuario: Usuario,
@@ -179,7 +201,10 @@ export class UsuarioController {
 
         if (hayErrores) {
             console.error(errores);
-            response.redirect('/Usuario/crear-usuario?error=Hay errores');
+            response.render('crear-usuario', {
+                error: 'errores',
+            });
+            // response.redirect('/Usuario/crear-usuario?error=Hay errores');
 
         } else {
             await this._usuarioService.crear(usuario);

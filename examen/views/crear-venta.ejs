@@ -1,0 +1,61 @@
+<%- include('comunes/header',{titulo:'Formulario venta'})%>
+
+<body>
+<div class="container vertical">
+    <div class="row" style="padding-top: 75px;">
+
+        <div class="col-md-4"></div>
+        <div class="col-sm-6">
+            <div>
+                <% var creando = typeof venta === "undefined" ? true : false; %>
+
+                <h1> <%= creando ? 'Crear' : 'Actualizar' %> Venta</h1>
+                <form action="/Venta/<%= creando ? 'crear' : 'actualizar' %>-venta<%= creando ? '' : '/'+venta.id %>"
+                      method="POST">
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input class="form-control"
+                               id="nombre"
+                               value="<%= creando ? '' : venta.nombre %>"
+                               name="nombre" type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fecha">Fecha</label>
+                        <input class="form-control"
+                               name="fecha"
+                               id="fecha"
+                               type="date"
+                        ><%= creando ? '' : venta.fecha %>
+                    </div>
+                    <div class="form-group">
+                        <label for="latitud">Latitud</label>
+                        <input class="form-control"
+                               type="number" step="0.01" name="latitud"
+                               id="latitud"
+                        ><%= creando ? '' : venta.latitud %>
+                    </div>
+                    <div class="form-group">
+                        <label for="longitud">Longitud</label>
+                        <input class="form-control"
+                               type="number" step="0.01"
+                               name="longitud"
+                               id="longitud"
+                        ><%= creando ? '' : venta.longitud %>
+                    </div>
+                    <button class="btn btn-danger" type="reset">Limpiar formulario</button>
+                    <button class="btn btn-success"><%= creando ? 'Crear' : 'Actualizar' %> Venta</button>
+                </form>
+
+                <a href="/Venta/ventas">
+                    <button class="btn btn-light">Regresar</button>
+                </a>
+            </div>
+        </div><div class="col-md-4"></div>
+
+    </div>
+</div>
+
+<%- include('comunes/librerias')%>
+</body>
+</html>

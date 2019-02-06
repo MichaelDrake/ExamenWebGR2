@@ -1,11 +1,10 @@
-<%- include('comunes/header',{titulo:titulo}) %>
+<%- include('comunes/header',{titulo:'Ventas'}) %>
 
-<body>
 <div class="container">
 
 
-    <h1>Gestión de Usuarios</h1>
-    <p>Buscar por nombre o correo</p>
+    <h1>Gestión de Ventas</h1>
+    <p>Buscar por nombre</p>
 
     <script>
         function borrar(evento) {
@@ -18,7 +17,8 @@
         }
     </script>
 
-    <form action="/Usuario/inicio" method="get">
+
+    <form action="/Venta/ventas" method="get">
         <div class="row">
             <div class="col-sm-9">
                 <div class="form-group">
@@ -27,13 +27,26 @@
                 </div>
             </div>
             <div class="col-sm-3">
-                <button type="submit"
-                        class="btn btn-outline-info btn-buscar btn-block">Buscar
-                </button>
+                <div class="form-group">
+                    <button type="submit"
+                            class="btn btn-outline-info btn-buscar btn-block">Buscar
+                    </button>
+                </div>
 
             </div>
         </div>
     </form>
+
+    <div class="row">
+        <div class="col-sm-9"></div>
+        <div class="col-sm-3">
+            <a href="/Venta/crear-venta">
+                <button class="btn btn-outline-success btn-espaciado btn-block">
+                    Crear Venta
+                </button>
+            </a>
+        </div>
+    </div>
 
     <% const existeMensaje = typeof mensaje !== "undefined" ? true : false; %>
 
@@ -45,34 +58,30 @@
 
     <% } %>
 
-    <h2>Usuarios</h2>
+    <h2>Ventas</h2>
 
     <table class="table table-hover animated fadeInUp">
-        <caption>Lista de usuarios</caption>
+        <caption>Lista de ventas</caption>
         <!--tr -> table row-->
         <thead>
         <tr>
             <!--th = table header-->
-            <th width="25%">Nombre</th>
-            <th width="25%">Correo</th>
-            <th width="20%">Fecha Nacimiento</th>
+            <th width="40%">Descripción de la Venta</th>
+            <th width="30%">Fecha de la Venta</th>
             <th width="30%">Acciones</th>
         </tr>
         </thead>
 
-        <% arreglo.forEach ((usuario) => { %>
+        <% arreglo.forEach ((venta) => { %>
             <tr>
                 <td>
-                    <%= usuario.nombre %>
+                    <%= venta.nombre %>
                 </td>
                 <td>
-                    <%= usuario.correo %>
+                    <%= venta.fecha %>
                 </td>
                 <td>
-                    <%= usuario.fechaNacimiento %>
-                </td>
-                <td>
-                    <form action="/Usuario/borrar/<%= usuario.id %>" method="post">
+                    <form action="/Venta/borrar/<%= venta.id %>" method="post">
                         <!--<button type="button">Yo no</button>-->
                         <!--<button>Yo tambien</button>-->
                         <button onclick="borrar(event)" type="submit"
@@ -80,9 +89,9 @@
                         </button>
 
                     </form>
-                    <a href="/Usuario/actualizar-rol/<%= usuario.id %>">
+                    <a href="/Venta/actualizar-venta/<%= venta.id %>">
                         <button type="button"
-                                class="btn btn-outline-info btn-block">Actualizar Rol
+                                class="btn btn-outline-info btn-block">Actualizar
                         </button>
                     </a>
                 </td>
@@ -92,10 +101,4 @@
     </table>
 </div>
 <%- include('comunes/librerias') %>
-</body>
-
 </html>
-
-
-
-

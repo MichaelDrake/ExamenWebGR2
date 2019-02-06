@@ -100,7 +100,7 @@ export class AppController {
         console.log(identificado);
         if (identificado) {
             sesion.usuario = nombre;
-            response.redirect('/saludar')
+            response.redirect('/Usuario/inicio')
         } else {
             throw new BadRequestException({mensaje: 'Error login'})
         }
@@ -119,6 +119,8 @@ export class AppController {
     ) {
         response.render('tienda');
     }
+
+
 
 
     @Get('logout')
