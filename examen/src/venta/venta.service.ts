@@ -4,7 +4,6 @@ import {VentaEntity} from "../venta/venta.entity";
 import {FindManyOptions, Repository} from "typeorm";
 import {InjectRepository} from '@nestjs/typeorm';
 
-
 @Injectable()
 export class VentaService {
     ventas: Venta[] = [
@@ -15,7 +14,6 @@ export class VentaService {
         private readonly _ventaRepository: Repository<VentaEntity>,
     ) {
     }
-
 
     async buscar(parametros?: FindManyOptions<VentaEntity>)
 
@@ -32,8 +30,6 @@ export class VentaService {
 
         const ventaCreado = await this._ventaRepository
             .save(ventaEntity);
-
-
         return ventaCreado;
     }
 
@@ -47,17 +43,12 @@ export class VentaService {
         return this._ventaRepository.save(ventaEntity);
     }
 
-
     async borrar(idVenta: number): Promise<VentaEntity> {
-
-
         // CREA UNA INSTANCIA DE LA ENTIDAD
         const ventaEntityAEliminar = await this._ventaRepository
             .create({
                 id: idVenta
             });
-
-
         return this._ventaRepository.remove(ventaEntityAEliminar)
     }
 

@@ -15,9 +15,10 @@ const tienda_entity_1 = require("./tienda/tienda.entity");
 const producto_entity_1 = require("./producto/producto.entity");
 const usuario_module_1 = require("./usuario/usuario.module");
 const evento_por_producto_entity_1 = require("./evento_por_producto/evento_por_producto.entity");
-const evento_entity_1 = require("./evento/evento.entity");
+const venta_entity_1 = require("./venta/venta.entity");
 const roles_por_usuario_entity_1 = require("./roles_por_usuario/roles_por_usuario.entity");
 const roll_entity_1 = require("./rol/roll.entity");
+const venta_module_1 = require("./venta/venta.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -26,8 +27,8 @@ AppModule = __decorate([
             typeorm_1.TypeOrmModule
                 .forRoot({
                 type: 'mysql',
-                host: 'localhost',
-                port: 3306,
+                host: '192.168.99.100',
+                port: 32769,
                 username: 'root',
                 password: 'root',
                 database: 'web-examen',
@@ -38,12 +39,13 @@ AppModule = __decorate([
                     tienda_entity_1.TiendaEntity,
                     producto_entity_1.ProductoEntity,
                     evento_por_producto_entity_1.Evento_por_productoEntity,
-                    evento_entity_1.EventoEntity,
+                    venta_entity_1.VentaEntity,
                     roles_por_usuario_entity_1.Roles_por_usuarioEntity,
                     roll_entity_1.RollEntity
                 ]
             }),
             usuario_module_1.UsuarioModule,
+            venta_module_1.VentaModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

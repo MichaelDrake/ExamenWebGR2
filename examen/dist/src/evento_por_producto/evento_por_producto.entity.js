@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
-const evento_entity_1 = require("../evento/evento.entity");
+const venta_entity_1 = require("../venta/venta.entity");
 const producto_entity_1 = require("../producto/producto.entity");
 let Evento_por_productoEntity = class Evento_por_productoEntity {
 };
@@ -19,8 +19,8 @@ __decorate([
     __metadata("design:type", Number)
 ], Evento_por_productoEntity.prototype, "numeroProducto", void 0);
 __decorate([
-    typeorm_1.ManyToOne(type => evento_entity_1.EventoEntity, evento => evento.eventosPorProducto),
-    __metadata("design:type", evento_entity_1.EventoEntity)
+    typeorm_1.ManyToOne(type => venta_entity_1.VentaEntity, evento => evento.eventosPorProducto),
+    __metadata("design:type", venta_entity_1.VentaEntity)
 ], Evento_por_productoEntity.prototype, "tabla_evento", void 0);
 __decorate([
     typeorm_1.ManyToOne(type => producto_entity_1.ProductoEntity, producto => producto.eventosPorProducto),

@@ -67,6 +67,27 @@ let UsuarioService = class UsuarioService {
             return tieneAlgoEnElnombre || tieneAlgoEnLaBio;
         });
     }
+    login(nombre, password) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const usuarioEncontrado = yield this._usuarioRepository
+                .findOne({
+                where: {
+                    nombre: nombre
+                }
+            });
+            if (usuarioEncontrado) {
+                if (usuarioEncontrado.password === password) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            else {
+                return false;
+            }
+        });
+    }
 };
 UsuarioService = __decorate([
     common_1.Injectable(),
