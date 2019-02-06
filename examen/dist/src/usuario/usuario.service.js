@@ -37,7 +37,7 @@ let UsuarioService = class UsuarioService {
         return __awaiter(this, void 0, void 0, function* () {
             const usuarioEntity = this._usuarioRepository
                 .create(nuevoUsuario);
-            console.log("va a guardar");
+            console.log('va a guardar');
             const usuarioCreado = yield this._usuarioRepository
                 .save(usuarioEntity);
             return usuarioCreado;
@@ -51,7 +51,7 @@ let UsuarioService = class UsuarioService {
     borrar(idUsuario) {
         const usuarioEntityAEliminar = this._usuarioRepository
             .create({
-            id: idUsuario
+            id: idUsuario,
         });
         return this._usuarioRepository.remove(usuarioEntityAEliminar);
     }
@@ -67,13 +67,13 @@ let UsuarioService = class UsuarioService {
             return tieneAlgoEnElnombre || tieneAlgoEnLaBio;
         });
     }
-    login(nombre, password) {
+    login(username, password) {
         return __awaiter(this, void 0, void 0, function* () {
             const usuarioEncontrado = yield this._usuarioRepository
                 .findOne({
                 where: {
-                    nombre: nombre
-                }
+                    nombre: username,
+                },
             });
             if (usuarioEncontrado) {
                 if (usuarioEncontrado.password === password) {
