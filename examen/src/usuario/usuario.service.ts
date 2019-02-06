@@ -124,6 +124,5 @@ export interface Usuario {
     nombre: string;
     correo: string;
     fechaNacimiento: string;
-
     password?: string;
 }
