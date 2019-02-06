@@ -98,7 +98,7 @@ export class AppController {
             .login(username, password);
         if (identificado) {
             sesion.usuario = username;
-            response.redirect('/saludar')
+            response.redirect('/Usuario/inicio')
         } else {
             throw new BadRequestException({mensaje: 'Error login'})
         }
