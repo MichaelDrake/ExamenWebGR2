@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="acb567e1-6b86-488b-88df-124642da8659" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examen/sessions/sMKMC_wmBZ-zCRcX8b6cgnUpqKJVIO6w.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examen/src/usuario/usuario.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/examen/src/usuario/usuario.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examen/views/rol.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/examen/views/rol.ejs" afterDir="false" />
-    </list>
+    <list default="true" id="acb567e1-6b86-488b-88df-124642da8659" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -250,18 +244,17 @@
       <workItem from="1549209043983" duration="8210000" />
       <workItem from="1549379459480" duration="660000" />
       <workItem from="1549393626358" duration="5621000" />
-      <workItem from="1549404813638" duration="9843000" />
+      <workItem from="1549404813638" duration="10173000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44792000" />
+    <option name="totallyTimeSpent" value="45122000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24925596" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24925596" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -271,7 +264,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" visible="true" weight="0.3289689" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.3666121" />
