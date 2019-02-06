@@ -1,9 +1,8 @@
 import {VentaService} from "./venta.service";
 import {Body, Controller, Get, Param, Post, Query, Res} from "@nestjs/common";
-import {VentaEntity} from "../venta/venta-entity";
 import {FindManyOptions, Like} from "typeorm";
-import {Venta} from "../venta/venta.service";
-import {VentaCreateDto} from "../venta/dto/venta-create.dto";
+import {VentaEntity} from "./venta.entity";
+import {Venta} from "./venta.service";
 import {validate, ValidationError} from "class-validator";
 
 @Controller('Venta')
@@ -13,6 +12,7 @@ export class VentaController {
     ) {
 
     }
+
     @Get('inicio')
     async inicio(
         @Res() response,
@@ -73,7 +73,6 @@ export class VentaController {
         // }
 
 
-
     }
 
     @Post('borrar/:idVenta')
@@ -98,9 +97,7 @@ export class VentaController {
         @Res() response
     ) {
         response.render(
-
             'registrarse'
-
         )
     }
 
@@ -145,34 +142,16 @@ export class VentaController {
         @Body() venta: Venta,
         @Res() response
     ) {
-        const ventaValidado = new VentaCreateDto();
-
-        ventaValidado.nombre = venta.nombre;
-        ventaValidado.correo = venta.correo;
-        ventaValidado.fechaNacimiento = venta.fechaNacimiento;
-
-        ventaValidado.password = venta.password;
-
-        const errores: ValidationError[] = await validate(ventaValidado);
-
-        const hayErrores = errores.length > 0;
-
-        if (hayErrores) {
-            console.error(errores);
-            response.redirect('/Venta/crear-venta?error=Hay errores');
-
-        } else {
-            await this._ventaService.crear(venta);
+        await this._ventaService.crear(venta);
 
 
-            // const parametrosConsulta = `?accion=crear&username=${venta.username}`;
+        const parametrosConsulta = `?accion=crear&nombre=${venta.nombre}`;
 
-            response.redirect('/login');
-
-        }
+        response.redirect('/Venta/inicio' + parametrosConsulta);
 
 
     }
+
 
     @Get(':id')
     obtenerPorId(
