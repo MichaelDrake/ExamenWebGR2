@@ -1,4 +1,3 @@
-
 import {Module} from '@nestjs/common';
 import {AppController} from './app.controller';
 import {AppService} from './app.service';
@@ -20,10 +19,10 @@ import {VentaModule} from "./venta/venta.module";
             .forRoot({
                 type: 'mysql',
                 host: '192.168.99.100',
-                port: 32769,
-                username: 'root',
-                password: 'root',
-                database: 'web-examen',
+                port: 32813,
+                username: 'web',
+                password: 'asdf1234',
+                database: 'tienda',
                 synchronize: true,
                 dropSchema: false,
                 entities: [
