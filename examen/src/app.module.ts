@@ -18,11 +18,11 @@ import {RollEntity} from "./rol/roll.entity";
         TypeOrmModule
             .forRoot({
                 type: 'mysql',
-                host: 'localhost',
-                port: 3306,
-                username: 'root',
-                password: 'root',
-                database: 'web-examen',
+                host: '192.168.99.100',
+                port: 32809,
+                username: 'web',
+                password: 'asdf1234',
+                database: 'tienda',
                 synchronize: true,
                 dropSchema: false,
                 entities: [
