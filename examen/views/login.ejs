@@ -1,27 +1,47 @@
-<h1>Login</h1>
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet"
+          href="/bootstrap/css/bootstrap.css">
+</head>
+<body>
+<div class="container">
+    <h1>Login</h1>
 
-<p>Ingresa tus credenciales</p>
+    <p>Ingresa tus credenciales</p>
 
-<form action="/login" method="post">
-    <div>
-        <% const existeu = typeof erroru !== "undefined" ? true : false; %>
-        <% const existep = typeof errorp !== "undefined" ? true : false; %>
+    <form action="/login" method="post">
+        <div>
+            <% const existeu = typeof erroru !== "undefined" ? true : false; %>
+            <% const existep = typeof errorp !== "undefined" ? true : false; %>
 
-<%if (existep || existeu){%>
+            <%if (existep || existeu){%>
 
-            <p style="color:#FF0000";>Credenciales Incorrectas!!!!</p>
+                <p style="color:#FF0000";>Credenciales Incorrectas!!!!</p>
 
-<%}%>
+            <%}%>
 
-        <label for="nombre">Usuario</label>
-        <input id="nombre" type="text" name="nombre">
-    </div>
-    <div>
-        <label for="password">Password</label>
-        <input id="password" type="password" name="password">
-    </div>
-    <button>Login</button>
-</form>
-<a href="/Usuario/crear-usuario">
-    <button>Ir a registrarme</button>
-</a>
+            <label for="nombre">Usuario</label>
+            <input id="nombre" type="text" name="nombre">
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input id="password" type="password" name="password">
+        </div>
+        <button type="submit" class="btn btn-light">Login</button>
+    </form>
+    <a href="/Usuario/crear-usuario">
+        <button type="submit" class="btn btn-light" > Ir a registrarme</button>
+    </a>
+
+
+
+
+</div>
+</body>
+</html>
