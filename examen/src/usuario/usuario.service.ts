@@ -84,7 +84,6 @@ export class UsuarioService {
                 const tieneAlgoEnLaBio = usuario
                     .correo.includes(busqueda);// True / False
 
-
                 return tieneAlgoEnElnombre || tieneAlgoEnLaBio;
             }
         )

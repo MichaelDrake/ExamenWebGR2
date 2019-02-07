@@ -98,15 +98,25 @@ let UsuarioController = class UsuarioController {
             response.redirect('/Usuario/inicio' + parametrosConsulta);
         });
     }
-    crearUsuario(response) {
-        response.render('registrarse');
+    crearUsuario(response, error) {
+        if (error) {
+            response.render('crear-usuario', {
+                error: error,
+            });
+        }
+        else {
+            response.render('crear-usuario');
+        }
+    }
+    mostrarRoles(response) {
+        response.render('rol');
     }
     actualizarUsuario(idUsuario, response) {
         return __awaiter(this, void 0, void 0, function* () {
             const usuarioAActualizar = yield this
                 ._usuarioService
                 .buscarPorId(Number(idUsuario));
-            response.render('crear-usuario', {
+            response.render('rol', {
                 usuario: usuarioAActualizar
             });
         });
@@ -130,7 +140,9 @@ let UsuarioController = class UsuarioController {
             const hayErrores = errores.length > 0;
             if (hayErrores) {
                 console.error(errores);
-                response.redirect('/Usuario/crear-usuario?error=Hay errores');
+                response.render('crear-usuario', {
+                    error: 'errores',
+                });
             }
             else {
                 yield this._usuarioService.crear(usuario);
@@ -164,12 +176,20 @@ __decorate([
 __decorate([
     common_1.Get('crear-usuario'),
     __param(0, common_1.Res()),
+    __param(1, common_1.Query('error')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [Object, String]),
     __metadata("design:returntype", void 0)
 ], UsuarioController.prototype, "crearUsuario", null);
 __decorate([
-    common_1.Get('actualizar-usuario/:idUsuario'),
+    common_1.Get('rol'),
+    __param(0, common_1.Res()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], UsuarioController.prototype, "mostrarRoles", null);
+__decorate([
+    common_1.Get('actualizar-rol/:idUsuario'),
     __param(0, common_1.Param('idUsuario')),
     __param(1, common_1.Res()),
     __metadata("design:type", Function),

@@ -10,58 +10,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
-const usuario_entity_1 = require("../usuario/usuario-entity");
-const producto_entity_1 = require("../producto/producto.entity");
-let TiendaEntity = class TiendaEntity {
+const evento_por_producto_entity_1 = require("../evento_por_producto/evento_por_producto.entity");
+let VentaEntity = class VentaEntity {
 };
 __decorate([
     typeorm_1.PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
-], TiendaEntity.prototype, "id", void 0);
-__decorate([
-    typeorm_1.Index(),
-    typeorm_1.Column({
-        name: 'nombre',
-        type: 'varchar',
-        length: 50,
-    }),
-    __metadata("design:type", String)
-], TiendaEntity.prototype, "nombre", void 0);
+], VentaEntity.prototype, "id", void 0);
 __decorate([
     typeorm_1.Column({
         type: 'varchar',
-        length: 50,
+        nullable: false
     }),
     __metadata("design:type", String)
-], TiendaEntity.prototype, "direccion", void 0);
+], VentaEntity.prototype, "nombre", void 0);
 __decorate([
     typeorm_1.Column({
-        type: 'date',
+        type: 'date'
     }),
     __metadata("design:type", String)
-], TiendaEntity.prototype, "fechaApertura", void 0);
+], VentaEntity.prototype, "fecha", void 0);
 __decorate([
     typeorm_1.Column({
-        type: 'int',
+        type: 'float'
     }),
     __metadata("design:type", Number)
-], TiendaEntity.prototype, "RUC", void 0);
+], VentaEntity.prototype, "latitud", void 0);
 __decorate([
     typeorm_1.Column({
-        type: 'boolean',
+        type: 'float'
     }),
-    __metadata("design:type", Boolean)
-], TiendaEntity.prototype, "matriz", void 0);
+    __metadata("design:type", Number)
+], VentaEntity.prototype, "longitud", void 0);
 __decorate([
-    typeorm_1.ManyToOne(type => usuario_entity_1.UsuarioEntity, usuario => usuario.tiendas),
-    __metadata("design:type", usuario_entity_1.UsuarioEntity)
-], TiendaEntity.prototype, "usuario", void 0);
-__decorate([
-    typeorm_1.OneToMany(type => producto_entity_1.ProductoEntity, producto => producto.tiendaId),
+    typeorm_1.OneToMany(type => evento_por_producto_entity_1.Evento_por_productoEntity, evento_por_producto => evento_por_producto.tabla_evento),
     __metadata("design:type", Array)
-], TiendaEntity.prototype, "productos", void 0);
-TiendaEntity = __decorate([
-    typeorm_1.Entity('db_tienda')
-], TiendaEntity);
-exports.TiendaEntity = TiendaEntity;
-//# sourceMappingURL=tienda.entity.js.map
+], VentaEntity.prototype, "eventosPorProducto", void 0);
+VentaEntity = __decorate([
+    typeorm_1.Entity('db_evento')
+], VentaEntity);
+exports.VentaEntity = VentaEntity;
+//# sourceMappingURL=venta.entity.js.map
