@@ -19,8 +19,8 @@ import {VentaModule} from "./venta/venta.module";
         TypeOrmModule
             .forRoot({
                 type: 'mysql',
-                host: '192.168.99.100',
-                port: 32769,
+                host: 'localhost',
+                port: 3306,
                 username: 'root',
                 password: 'root',
                 database: 'web-examen',
