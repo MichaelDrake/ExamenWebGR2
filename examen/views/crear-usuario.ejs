@@ -27,19 +27,27 @@
             <% const existe22 = typeof error22 !== "undefined" ? true : false; %>
             <% const existe23 = typeof error23 !== "undefined" ? true : false; %>
             <% if(existe20){ %>
-                <p style="color:#FF0000";>El campo <%= error20 %> no es valido</p>
+            <div class = col-sm-7>
+                <p style="color:#FF0000";> El campo <%= error20 %> no es valido</p>
+            </div>
             <% } %>
             <% if(existe21){ %>
-                <p style="color:#FF0000";>El campo <%= error21 %> no es valido</p>
+            <div class = col-sm-7>
+                <p style="color:#FF0000";> El campo <%= error21 %> no es valido</p>
+            </div>
             <% } %>
             <% if(existe22){ %>
-                <p style="color:#FF0000";>El campo  <%= error22 %> no es valido</p>
+                <div class = col-sm-7>
+                <p style="color:#FF0000";> El campo  <%= error22 %> no es valido</p>
+                </div>
             <% } %>
             <% if(existe23){ %>
-                <p style="color:#FF0000";>El campo <%= error23 %> no es valido)</p>
+                    <div class = col-sm-7>
+                <p style="color:#FF0000";> El campo <%= error23 %> no es valido</p>
+                    </div>
             <% } %>
             <div class = "col-sm-7 form-group">
-            <label for="nombre">Usuario</label>
+            <label for="nombre">Usuario </label>
             <input class = "form-control" id="nombre" type="text" name="nombre">
             </div>
 
@@ -55,7 +63,7 @@
 
                 </div>
             <div class = "col-sm-7 form-group">
-                <label for="password">Password</label>
+                <label for="password">Password </label>
                 <input class = "form-control" id="password" type="password" name="password">
                 </div>
             </div class = "col-sm-12 form-group">
