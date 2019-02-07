@@ -117,12 +117,21 @@ export class UsuarioController {
     crearUsuario(
         @Res() response,
         @Query('error') error: string,
+        @Query('error20') error20: string,
+        @Query('error21') error21: string,
+        @Query('error22') error22: string,
+        @Query('error23') error23: string,
     ) {
-        if(error){
+        if(error20 || error21 || error22 || error23){
+
+            console.log(error20)
             response.render(
 
                 'crear-usuario', {
-                    error: error,
+                    error20: error20,
+                    error21: error21,
+                    error22: error22,
+                    error23: error23,
                 }
 
             )
@@ -200,9 +209,19 @@ export class UsuarioController {
         const hayErrores = errores.length > 0;
 
         if (hayErrores) {
+
+            const errores2 = errores.map((errores)=>{return errores['property']})
             console.error(errores);
+            console.log(errores2[0])
+
+
+
             response.render('crear-usuario', {
                 error: 'errores',
+                error20: errores2[0],
+                error21: errores2[1],
+                error22: errores2[2],
+                error23: errores2[3],
             });
             // response.redirect('/Usuario/crear-usuario?error=Hay errores');
 
@@ -260,6 +279,5 @@ export class UsuarioController {
 // numeroTelefono
 // celular
 // apodo
-
 
 

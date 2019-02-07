@@ -4,10 +4,21 @@
 
 <form action="/Usuario/crear-usuario" method="post">
     <div>
-        <% const existeError = typeof error !== "undefined" ? true : false; %>
-
-        <% if(existeError){ %>
-                <h1>ERROR: <%= error %></h1>
+        <% const existe20 = typeof error20 !== "undefined" ? true : false; %>
+        <% const existe21 = typeof error21 !== "undefined" ? true : false; %>
+        <% const existe22 = typeof error22 !== "undefined" ? true : false; %>
+        <% const existe23 = typeof error23 !== "undefined" ? true : false; %>
+        <% if(existe20){ %>
+            <p style="color:#FF0000";>El campo <%= error20 %> no es valido</p>
+        <% } %>
+        <% if(existe21){ %>
+        <p style="color:#FF0000";>El campo <%= error21 %> no es valido</p>
+        <% } %>
+        <% if(existe22){ %>
+        <p style="color:#FF0000";>El campo  <%= error22 %> no es valido</p>
+        <% } %>
+        <% if(existe23){ %>
+        <p style="color:#FF0000";>El campo <%= error23 %> no es valido)</p>
         <% } %>
         <label for="nombre">Usuario</label>
         <input id="nombre" type="text" name="nombre">
