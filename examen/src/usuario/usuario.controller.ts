@@ -1,5 +1,5 @@
 // usuario.controller.ts
-import {Body, Controller, ForbiddenException, Get, Param, Post, Query, Res, Session} from "@nestjs/common";
+import {Body, Controller, ForbiddenException, Get, HttpCode, Param, Post, Query, Res, Session} from "@nestjs/common";
 import {Usuario, UsuarioService} from "./usuario.service";
 import {UsuarioEntity} from "./usuario-entity";
 import {FindManyOptions, Like} from 'typeorm';
@@ -192,6 +192,7 @@ export class UsuarioController {
     }
 
     @Post('crear-usuario')
+    @HttpCode(200)
     async crearUsuarioFormulario(
         @Body() usuario: Usuario,
         @Res() response

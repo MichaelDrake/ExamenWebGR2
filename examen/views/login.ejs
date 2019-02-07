@@ -4,6 +4,15 @@
 
 <form action="/login" method="post">
     <div>
+        <% const existeu = typeof erroru !== "undefined" ? true : false; %>
+        <% const existep = typeof errorp !== "undefined" ? true : false; %>
+
+<%if (existep || existeu){%>
+
+            <p style="color:#FF0000";>Credenciales Incorrectas!!!!</p>
+
+<%}%>
+
         <label for="nombre">Usuario</label>
         <input id="nombre" type="text" name="nombre">
     </div>
@@ -13,3 +22,6 @@
     </div>
     <button>Login</button>
 </form>
+<a href="/Usuario/crear-usuario">
+    <button>Ir a registrarme</button>
+</a>
