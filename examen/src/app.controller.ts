@@ -91,9 +91,8 @@ import {Code} from "typeorm";
         async loginMetodo(
             @Body('nombre') nombre: string,
             @Body('password') password: string,
-
             @Res() response,
-            @Session() sesion
+            @Session() sesion,
         ) {
             console.log(nombre);
             const identificado = await this._usuarioService
@@ -130,7 +129,7 @@ import {Code} from "typeorm";
 
           erroru: 'erroru',
           errorp: 'errorp',
-            })
+            });
 
 
 
