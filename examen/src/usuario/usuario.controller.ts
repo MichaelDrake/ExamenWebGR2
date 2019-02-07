@@ -192,7 +192,6 @@ export class UsuarioController {
     }
 
     @Post('crear-usuario')
-    @HttpCode(200)
     async crearUsuarioFormulario(
         @Body() usuario: Usuario,
         @Res() response
