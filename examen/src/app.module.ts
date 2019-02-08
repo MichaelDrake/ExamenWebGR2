@@ -12,15 +12,15 @@ import {VentaEntity} from "./venta/venta.entity";
 import {Roles_por_usuarioEntity} from "./roles_por_usuario/roles_por_usuario.entity";
 import {RollEntity} from "./rol/roll.entity";
 import {VentaModule} from "./venta/venta.module";
-
+import {TiendaModule} from "./tienda/tienda.module";
 
 @Module({
     imports: [
         TypeOrmModule
             .forRoot({
                 type: 'mysql',
-                host: 'localhost',
-                port: 3306,
+                host: '192.168.99.100',
+                port: 32781,
                 username: 'root',
                 password: 'root',
                 database: 'web-examen',
@@ -33,11 +33,12 @@ import {VentaModule} from "./venta/venta.module";
                     Evento_por_productoEntity,
                     VentaEntity,
                     Roles_por_usuarioEntity,
-                    RollEntity
-                ]
+                    RollEntity,
+                ],
             }),
         UsuarioModule,
-        VentaModule
+        VentaModule,
+        TiendaModule
   ],
   controllers: [AppController],
   providers: [AppService],

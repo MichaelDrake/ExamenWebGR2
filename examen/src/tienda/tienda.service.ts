@@ -22,11 +22,15 @@ export class TiendaService {
 
     async crear(nuevaTienda: Tienda): Promise<TiendaEntity> {
 
+        console.log("----------------------------------------\n\n\n")
+        //nuevaTienda.id
+
+        console.log("----------------------------------------\n\n\n")
         const TiendaEntity = this._TiendaRepository
             .create(nuevaTienda);
 
-        console.log("va a guardar")
-
+        console.log("va a guardar\n\n\n")
+        console.log(TiendaEntity)
         const tiendaCreada = await this._TiendaRepository
             .save(TiendaEntity);
         return tiendaCreada;
@@ -60,7 +64,7 @@ export interface Tienda {
     nombre: string;
     direccion: string;
     fechaApertura: string;
-    RUC: number;
-    matriz: boolean
+    RUC: string;
+    matriz: string
 
 }

@@ -7,7 +7,9 @@ import {TiendaEntity} from "./tienda.entity";
 export class TiendaController {
 
   constructor(private readonly _tiendaService: TiendaService) {
+
   }
+
 
     @Get('tiendas')
     async tiendas(
@@ -131,7 +133,7 @@ export class TiendaController {
             .buscarPorId(Number(idTienda));
 
         response.render(
-            'crear-venta', {
+            'crear-tienda', {
                 venta: tiendaActualizar
             }
         )
@@ -147,23 +149,27 @@ export class TiendaController {
         tienda.id = +idTienda;
 
         await this._tiendaService.actualizar(+idTienda, tienda);
-
-
         const parametrosConsulta = `?accion=actualizar&nombre=${tienda.nombre}`;
-
-
         response.redirect('/Tienda/tiendas' + parametrosConsulta);
 
     }
 
 
     @Post('crear-tienda')
-    crearTiendaFormulario(
+    async crearTiendaFormulario(
         @Body() tienda: Tienda,
         @Res() response
     ) {
-        this._tiendaService.crear(tienda);
+        let tiendas: TiendaEntity[];
+        tiendas = await this._tiendaService.buscar();
 
+       //
+       tienda.id =  tiendas.length+1;
+
+        console.log(tienda)
+
+
+        this._tiendaService.crear(tienda);
 
         const parametrosConsulta = `?accion=crear&nombre=${tienda.nombre}`;
 

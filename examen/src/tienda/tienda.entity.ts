@@ -30,14 +30,15 @@ export class TiendaEntity {
     fechaApertura: string;
 
     @Column({
-        type: 'int',
+        type: 'varchar',
+        length: 10,
     })
-    RUC: number;
+    RUC: string;
 
     @Column({
-        type: 'boolean',
+        type: 'varchar',
     })
-    matriz: boolean;
+    matriz: string;
 
     @ManyToOne(
         type => UsuarioEntity, // Tipo relacion de muchos

@@ -1,0 +1,94 @@
+<%- include('comunes/header',{titulo:'Formulario Tienda'})%>
+
+<body>
+<div class="container vertical">
+    <div class="row" style="padding-top: 75px;">
+
+        <div class="col-md-4"></div>
+        <div class="col-sm-6">
+            <div>
+
+                <% var creando = typeof tienda === "undefined" ? true : false; %>
+
+                <h1> <%= creando ? 'Crear' : 'Actualizar' %> Tienda</h1>
+                <form action="/Tienda/<%= creando ? 'crear' : 'actualizar' %>-tienda<%= creando ? '' : '/'+tienda.id %>"
+                      method="POST">
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input class="form-control"
+                               id="nombre"
+                               value="<%= creando ? '' : tienda.nombre %>"
+                               name="nombre" type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nombre">Direccion</label>
+                        <input class="form-control"
+                               id="direccion"
+                               value="<%= creando ? '' : tienda.direccion %>"
+                               name="direccion" type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fecha">Fecha Apertura</label>
+                        <input class="form-control"
+                               name="fechaApertura"
+                               id="fechaApertura"
+                               type="date"
+                        ><%= creando ? '' : tienda.fechaApertura %>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="latitud">RUC</label>
+                        <input class="form-control"
+                               type="number" name="RUC"
+                               id="RUC"
+                        ><%= creando ? '' : tienda.RUC %>
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">Matriz</label>
+                        <!--<input class="form-control"-->
+                        <!--id="nombre"-->
+                        <!--value="<%= creando ? '' : tienda.Matriz %>"-->
+                        <!--name="matriz" type="text">-->
+                        <br>
+                        <label class="checkbox-inline"><input type="checkbox" value="Matriz" id="matriz" name="matriz">Matriz</label>
+                        <label class="checkbox-inline"><input type="checkbox" value="Sucursal" id="matriz" name="matriz">Sucursal</label>
+
+
+                        <!--<select class="form-control form-control-sm"-->
+                                <!--id="matriz"-->
+                                <!--formControlName="matriz"-->
+                                <!--name="matriz">-->
+                            <!--<option >&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+                            <!--<option>Si es Matriz</option>-->
+                            <!--<option>No es matriz</option>-->
+                        <!--</select>-->
+
+
+                        <!--<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                        <!--<%= creando ? 'Opciones' : tienda.Matriz %>-->
+                        <!--</button>-->
+                        <!--<br>-->
+                        <!--<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
+
+                        <!--<a class="dropdown-item" href="#">Si es matriz</a>-->
+                        <!--<a class="dropdown-item" href="#">No es matriz</a>-->
+                        <!--</div>-->
+                    </div>
+                    <button class="btn btn-danger" type="reset">Limpiar formulario</button>
+                    <button class="btn btn-success"><%= creando ? 'Crear' : 'Actualizar' %> Tienda</button>
+                </form>
+
+                <!--<a href="/tienda/ventas">-->
+                <!--<button class="btn btn-light">Regresar</button>-->
+                <!--</a>-->
+            </div>
+        </div><div class="col-md-4"></div>
+
+    </div>
+</div>
+
+<%- include('comunes/librerias')%>
+</body>
+</html>

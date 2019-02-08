@@ -70,6 +70,7 @@ export class VentaController {
 
 
     }
+
     @Get('ventas-publico')
     async ventasPublico(
         @Res() response,

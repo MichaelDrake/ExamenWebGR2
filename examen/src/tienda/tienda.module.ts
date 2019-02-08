@@ -10,7 +10,7 @@ import { TiendaController } from './tienda.controller';
       TypeOrmModule.forFeature(
         [
           TiendaEntity,
-        ],
+        ]
       ),
     ],
     controllers: [
