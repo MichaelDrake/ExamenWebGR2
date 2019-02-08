@@ -1,34 +1,104 @@
-<h1>Registrarse</h1>
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet"
+          href="/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet"
+          href="/css/misestilos.css">
+</head>
+<body>
+<div class="container">
 
-<p>Registrate</p>
 
-<form action="/Usuario/crear-usuario" method="post">
-    <div>
-        <% const existeError = typeof error !== "undefined" ? true : false; %>
+    <h1>Registrarse</h1>
 
-        <% if(existeError){ %>
-                <h1>ERROR: <%= error %></h1>
-        <% } %>
-        <label for="nombre">Usuario</label>
-        <input id="nombre" type="text" name="nombre">
+    <p>Registrate</p>
 
+    <form action="/Usuario/crear-usuario" method="post">
 
-        <div>
-            <div>
-                <label for="correo">Correo</label>
-                <input id="correo" type="text" name="correo">
-
+        <div class = "row">
+            <% const existe20 = typeof error20 !== "undefined" ? true : false; %>
+            <% const existe21 = typeof error21 !== "undefined" ? true : false; %>
+            <% const existe22 = typeof error22 !== "undefined" ? true : false; %>
+            <% const existe23 = typeof error23 !== "undefined" ? true : false; %>
+            <% if(existe20){ %>
+            <div class = col-sm-7>
+                <p style="color:#FF0000";> El campo <%= error20 %> no es valido</p>
             </div>
-            <div>
-                <label for="fechaNacimiento">Fecha de Nacimiento</label>
-                <input id="fechaNacimiento" type="Date" name="fechaNacimiento">
-
+            <% } %>
+            <% if(existe21){ %>
+            <div class = col-sm-7>
+                <p style="color:#FF0000";> El campo <%= error21 %> no es valido</p>
             </div>
-            <label for="password">Password</label>
-            <input id="password" type="password" name="password">
+            <% } %>
+            <% if(existe22){ %>
+                <div class = col-sm-7>
+                <p style="color:#FF0000";> El campo  <%= error22 %> no es valido</p>
+                </div>
+            <% } %>
+            <% if(existe23){ %>
+                    <div class = col-sm-7>
+                <p style="color:#FF0000";> El campo <%= error23 %> no es valido</p>
+                    </div>
+            <% } %>
+            <div class = "col-sm-7 form-group">
+            <label for="nombre">Usuario </label>
+            <input class = "form-control" id="nombre" type="text" name="nombre">
+            </div>
+
+
+                <div class = "col-sm-7 form-group">
+                    <label for="correo">Correo</label>
+                    <input class = "form-control" id="correo" type="text" name="correo">
+
+                </div>
+                <div class = "col-sm-7 form-group">
+                    <label for="fechaNacimiento">Fecha de Nacimiento</label>
+                    <input class = "form-control" id="fechaNacimiento" type="Date" name="fechaNacimiento">
+
+                </div>
+            <div class = "col-sm-7 form-group">
+                <label for="password">Password </label>
+                <input class = "form-control" id="password" type="password" name="password">
+                </div>
+            </div class = "col-sm-12 form-group">
+            <button type="submit" class="btn btn-info boton-esapciado">Registrarse</button>
+
+
+    </form>
+
+     <a href="/login"> YA TENGO UNA CUENTA
+
+    </a>
+
+
         </div>
-        <button>Registrarse</button>
-</form>
-<a href="/login">
-    <button>Regresar</button>
-</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+

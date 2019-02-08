@@ -6,7 +6,6 @@ export class UsuarioCreateDto {
 
     @IsNotEmpty()
     @IsString()
-
     @Length(5)
     nombre:string;
 
