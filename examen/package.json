@@ -20,7 +20,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@nestjs/common": "^5.4.0",
+    "@nestjs/common": "^5.7.0",
     "@nestjs/core": "^5.4.0",
     "@nestjs/typeorm": "^5.2.2",
     "@types/express-session": "^1.15.11",
@@ -36,7 +36,7 @@
     "rimraf": "^2.6.2",
     "rxjs": "^6.2.2",
     "session-file-store": "^1.2.0",
-    "typeorm": "^0.2.11",
+    "typeorm": "^0.2.12",
     "typescript": "^3.0.1"
   },
   "devDependencies": {

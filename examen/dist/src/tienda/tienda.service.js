@@ -12,6 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var _a;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("typeorm");
 const typeorm_2 = require("@nestjs/typeorm");
@@ -67,7 +68,7 @@ let TiendaService = class TiendaService {
 TiendaService = __decorate([
     common_1.Injectable(),
     __param(0, typeorm_2.InjectRepository(tienda_entity_1.TiendaEntity)),
-    __metadata("design:paramtypes", [typeorm_1.Repository])
+    __metadata("design:paramtypes", [typeof (_a = typeof typeorm_1.Repository !== "undefined" && typeorm_1.Repository) === "function" ? _a : Object])
 ], TiendaService);
 exports.TiendaService = TiendaService;
 //# sourceMappingURL=tienda.service.js.map

@@ -20,6 +20,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var _a;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("typeorm");
 const typeorm_2 = require("@nestjs/typeorm");
@@ -92,7 +93,7 @@ let UsuarioService = class UsuarioService {
 UsuarioService = __decorate([
     common_1.Injectable(),
     __param(0, typeorm_2.InjectRepository(usuario_entity_1.UsuarioEntity)),
-    __metadata("design:paramtypes", [typeorm_1.Repository])
+    __metadata("design:paramtypes", [typeof (_a = typeof typeorm_1.Repository !== "undefined" && typeorm_1.Repository) === "function" ? _a : Object])
 ], UsuarioService);
 exports.UsuarioService = UsuarioService;
 //# sourceMappingURL=usuario.service.js.map

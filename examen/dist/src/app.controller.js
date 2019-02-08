@@ -20,6 +20,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var _a;
 const common_1 = require("@nestjs/common");
 const rxjs_1 = require("rxjs");
 const usuario_service_1 = require("./usuario/usuario.service");
@@ -110,7 +111,7 @@ __decorate([
     common_1.Get('saludarObservable'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", rxjs_1.Observable)
+    __metadata("design:returntype", typeof (_a = typeof rxjs_1.Observable !== "undefined" && rxjs_1.Observable) === "function" ? _a : Object)
 ], AppController.prototype, "saludarObservable", null);
 __decorate([
     common_1.Post('login'),
