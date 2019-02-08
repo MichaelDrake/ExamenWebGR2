@@ -33,6 +33,7 @@ export class TiendaEntity {
         type: 'int',
     })
     RUC: number;
+
     @Column({
         type: 'boolean',
     })
